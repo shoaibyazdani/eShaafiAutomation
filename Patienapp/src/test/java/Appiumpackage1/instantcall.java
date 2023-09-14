@@ -11,7 +11,7 @@ import io.appium.java_client.android.Activity;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
-public class Appiumbasics extends BaseTest {
+public class instantcall extends BaseTest {
     
     @Test
     public void AppiumTest() throws MalformedURLException {
@@ -19,21 +19,7 @@ public class Appiumbasics extends BaseTest {
 
     	
     	//Login Using Method in BaseTest
-    	  //Login("3066163246","999999");
-    	
-    	
-    	//Call Instant Call Method
-    	// instantcall();
-    	
-    	
-    	//Call Book now Method
-    		BookNow();
-    		
-    		
-    	
-    	
-    
-    	
+    	   Login("3066163246","999999");
 
     	
     	/*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -65,15 +51,14 @@ public class Appiumbasics extends BaseTest {
         for (int i = 1; i <= 3; i++) {
             WebElement allowButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.android.permissioncontroller:id/permission_allow_button")));
             allowButton.click();
-        }
+        }*/
         
      // Click on the "Instant Call" button
-    	WebDriverWait  wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement InstantCallBtn = driver.findElement(By.id("com.eshaafi.patient.consultation:id/guide"));
         InstantCallBtn.click();
    
      // Wait for the "Proceed" button to appear and then click it
-           wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait   wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement proceedButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/proceed_button")));
         proceedButton.click();
 
@@ -95,6 +80,6 @@ public class Appiumbasics extends BaseTest {
         // Click on the "Pay Now" button
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement payNowButton = driver.findElement(By.id("com.eshaafi.patient.consultation:id/pay_now_button"));
-        payNowButton.click(); */
+        payNowButton.click();
     }
 }
