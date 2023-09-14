@@ -36,7 +36,7 @@ public class BaseTest {
 				
 				UiAutomator2Options options = new UiAutomator2Options();
 			
-				options.setDeviceName("Pixel 7");
+				options.setDeviceName("Pixel 5");
 				options.setCapability("appPackage", "com.eshaafi.patient.consultation");
 				options.setCapability("appActivity", "com.eshaafi.patient.consultation.ui.auth.AuthActivity");
 				options.setCapability("appWaitActivity", "com.eshaafi.patient.consultation.ui.auth.AuthActivity");
