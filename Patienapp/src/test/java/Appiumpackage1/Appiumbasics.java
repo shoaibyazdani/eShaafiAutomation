@@ -19,17 +19,19 @@ public class Appiumbasics extends BaseTest {
 
     	
     	//Login Using Method in BaseTest
-    	  //Login("3066163246","999999");
+    	 	 //Login("3066163246","999999");
     	
     	
     	//Call Instant Call Method
-    	// instantcall();
+    		//instantcall();
     	
     	
     	//Call Book now Method
     		BookNow();
     		
+    		//checkwallet();
     		
+    		Logout();
     	
     	
     
