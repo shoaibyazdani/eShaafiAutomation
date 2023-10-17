@@ -84,10 +84,11 @@ public class BaseTest {
 	}
 	
 	//Booking flow
-	public void BookNow() {
 	
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-	
+	public void BookNow(int n) {
+		for (int i = 1; i < n; i++) {
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//	
 	 	// Wait for the element to be visible
 	 	WebElement BookNow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/book_appointments_button")));
 	
@@ -110,7 +111,7 @@ public class BaseTest {
      
 	    // wait and Select second slot from the list
 	    WebElement slot = wait.until(ExpectedConditions.elementToBeClickable(
-	            By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[2]/android.widget.TextView")));
+	            By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView")));
 
 	    // Click on the slot
 	    slot.click();
@@ -123,9 +124,9 @@ public class BaseTest {
 	    proceedBtn.click();
 	    
 //	    String toastMessage= driver.findElement(By.xpath("(//android.widget.Toast)")).getAttribute( "name");
-//	    
+	    
 //	    AssertJUnit.assertEquals(toastMessage, "Please select slot first");
-//	    
+	    
 	    //Select Profile
 	    WebElement Selectprofile = wait.until(ExpectedConditions.elementToBeClickable(
 	             By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]")));
@@ -135,8 +136,8 @@ public class BaseTest {
 	    WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(
 	             By.id("com.eshaafi.patient.consultation:id/switch1")));
 	     switchElement.click();
-	     
-	  // Click on Proceed Button
+//	     
+//	  // Click on Proceed Button
 	     wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	
 	 	// Wait for the element to be visible
@@ -145,22 +146,22 @@ public class BaseTest {
 	 	// Click on Book Now
 	 	ProceedBtn1.click();
 	 	
-	 	//Click on Pay now Button
+//	 	//Click on Pay now Button
 	 	wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-	
-	 	// Wait for the element to be visible
+//	
+//	 	// Wait for the element to be visible
 	 	WebElement PayNowBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.cardview.widget.CardView/android.view.ViewGroup/android.widget.Button")));
 	
-	 	// Click on Pay Now
+//	 	// Click on Pay Now
 	 	PayNowBtn.click();
  	
 	 	WebElement Gotohome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[2]")));
 	
-	 	// Click on Pay Now
+//	 	// Click on Pay Now
 	 	Gotohome.click();
  	
  	
-	
+		}
 }
 
 
@@ -244,13 +245,14 @@ public class BaseTest {
 	    System.out.println("Login Successful"); 
 	}
 	
+	//Log out Function
 	public void Logout() {
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		WebElement sidemenu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/left_imageview")));
 		sidemenu.click();
 		
-		WebElement logout = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/androidx.cardview.widget.CardView/android.view.ViewGroup[2]/android.widget.TextView"));
+		WebElement logout = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/androidx.cardview.widget.CardView/android.view.ViewGroup[2]/android.widget.TextView")));
 		
 		logout.click();
 		

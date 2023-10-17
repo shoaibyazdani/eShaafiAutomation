@@ -18,21 +18,28 @@ public class Appiumbasics extends BaseTest {
         
 
     	
-    	//Login Using Method in BaseTest
-    	 	 //Login("3066163246","999999");
     	
+//    	        for (int i = 0; i < 5; i++) {
+    	           Login("3066163246","999999"); // Call the first function
+//    	            Logout(); // Call the second function
+//    	        }
+    	    
     	
-    	//Call Instant Call Method
-    		//instantcall();
-    	
-    	
-    	//Call Book now Method
-    		BookNow();
-    		
-    		//checkwallet();
-    		
-    		Logout();
-    	
+		    	//Login Using Method in BaseTest
+		//    	 	 Login("3066163246","999999");
+		//    	System.out.println("Logout Successful 2");
+		    	
+		    	//Call Instant Call Method
+		    		//instantcall();
+		    	
+		    	
+		    	//Call Book now Method
+		    		BookNow(5);
+		    		
+		    		//check wallet();
+		    		
+		//    		Logout();
+		//    	System.out.println("Logout Successful 2");
     	
     
     	
