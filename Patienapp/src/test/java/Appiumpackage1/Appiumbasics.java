@@ -22,10 +22,11 @@ public class Appiumbasics extends BaseTest {
     	
     	
 //    	if (Login("3007777777", "999999")) {
-    		BookNow(5);
+//    		BookNow(1);
 //    		NewProfile("Shoaib");
 //    		instantcall();
-//    	    Logout();
+    		checkwallet();
+    	    Logout();
 //    	    
 //    	}
 

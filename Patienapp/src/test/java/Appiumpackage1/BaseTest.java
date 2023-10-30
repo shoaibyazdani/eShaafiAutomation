@@ -103,7 +103,7 @@ public class BaseTest {
 	
 	public void BookNow(int n) {
 		System.out.println("Book Now Flow is started");
-		for (int i = 2; i < n; i++) {
+		for (int i = 1; i <= n; i++) {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 //	
 	 	// Wait for the element to be visible
@@ -340,6 +340,11 @@ public class BaseTest {
 
 		// Output the wallet balance to the console
 		System.out.println("User's Wallet Balance is: " + walletBalanceText);
+		
+		WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/homefragment")));
+		Home.click();
+		
+		
 
 	}
 		
@@ -359,7 +364,7 @@ public class BaseTest {
 		WebElement sidemenu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/left_imageview")));
 		sidemenu.click();
 		
-		WebElement logout = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/androidx.cardview.widget.CardView/android.view.ViewGroup[2]/android.widget.TextView")));
+		WebElement logout = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/logout_layout")));
 		
 		logout.click();
 		
