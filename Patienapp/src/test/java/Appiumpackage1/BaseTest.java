@@ -103,10 +103,10 @@ public class BaseTest {
 	
 	public void BookNow(int n) {
 		System.out.println("Book Now Flow is started");
-		for (int i = 1; i <= n; i++) {
+		for (int i = 2; i <= n; i++) {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//	
-	 	// Wait for the element to be visible
+
+	 	 //Wait for the element to be visible
 	 	WebElement BookNow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/book_appointments_button")));
 	
 	 	// Click on Book Now
@@ -132,11 +132,53 @@ public class BaseTest {
 	    slot.click();
 	    
 	 
-	    // Wait for "Proceed" button to be click able
-	    WebElement proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
-	            By.id("com.eshaafi.patient.consultation:id/proceed_button")));
-	    proceedBtn.click();
-	   
+
+	 // Wait for "Proceed" button to be clickable
+	 WebElement proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
+	         By.id("com.eshaafi.patient.consultation:id/proceed_button")));
+	 proceedBtn.click();
+
+	 // Check if toast message appears
+	 wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+
+	// Check if the toast message element is present
+	List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
+
+	if (!toastMessageElements.isEmpty()) {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+	    WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
+	    String messageText = toastMessage.getText();
+
+	    if (messageText.equals("Please select slot first")) {
+	        System.out.println("Toast message is correct: " + messageText);
+
+	        // Handle the case where the toast message is correct
+
+	        // Click on the next slot
+	        WebElement slot1 = wait.until(ExpectedConditions.elementToBeClickable(
+	                By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + (i + 1) + "]/android.widget.TextView")));
+	        slot1.click();
+
+	        // Wait for "Proceed" button to be clickable again
+	        proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
+	                By.id("com.eshaafi.patient.consultation:id/proceed_button")));
+
+	        try {
+	            Thread.sleep(3500); // Sleep for 3.5 seconds
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+
+	        proceedBtn.click();
+	    }
+	} else {
+	    System.out.println("Toast message not found. Continuing with the next steps.");
+	    // Continue with the next steps
+	}
+
+
+	    // Continue with the next steps
+ 
 	    
 //	    String toastMessage= driver.findElement(By.xpath("(//android.widget.Toast)")).getAttribute( "name");
 	    
@@ -161,6 +203,10 @@ public class BaseTest {
 	
 	 	// Click on Book Now
 	 	ProceedBtn1.click();
+	 	
+	 
+
+	 	
 	 	
 //	 	//Click on Pay now Button
 	 	wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -189,38 +235,56 @@ public class BaseTest {
 	        WebElement InstantCallBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/guide")));
 	        InstantCallBtn.click();
 	        System.out.println("Instant Call Booking Flow is Started");
-	     // Wait for the "Proceed" button to appear and then click it
-	           wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	        WebElement proceedButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/proceed_button")));
-	        proceedButton.click();
-	        System.out.println("Doctor Slot is Shown ");
 	        
-	      //Select Profile
+	     // Find the button by its ID
+	        WebElement proceedButton1 = driver.findElement(By.id("com.eshaafi.patient.consultation:id/proceed_button"));
+
+	        // Check if the button is enabled
+	        boolean Btnstate = proceedButton1.isEnabled();
+	        if(Btnstate  == true) {
+	        	
+	        	// Wait for the "Proceed" button to appear and then click it
+		           wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		        WebElement proceedButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/proceed_button")));
+		        proceedButton.click();
+		        System.out.println("Doctor Slot is Shown ");
+		        
+		      //Select Profile
+		        
+			    WebElement Selectprofile = wait.until(ExpectedConditions.elementToBeClickable(
+			             By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]")));
+			    Selectprofile.click();	    
+			    
+		        
+		     // Click on the switch element
+		        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		        WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/switch1")));
+		        switchElement.click(); 
+		        System.out.println("Slot is Reserved ");
+		        
+		        
+		        // Click on the "Pay Now" button
+		        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		        WebElement payNowButton = driver.findElement(By.id("com.eshaafi.patient.consultation:id/pay_now_button"));
+		        payNowButton.click();
+		        System.out.println("Wallet is Selected ");
+		        
+		        WebElement Gotohome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[2]")));
+		        System.out.println("Payment Successful ");
+		     	// Click on Pay Now
+		     	Gotohome.click();
+		     	System.out.println("Instant Call Booking Flow Completed ");
+	        }
+	        else {
+	        	
+	        	System.out.println("The appointment is already booked ");
+		    }
+	        }
+
+	        // Print the result
 	        
-		    WebElement Selectprofile = wait.until(ExpectedConditions.elementToBeClickable(
-		             By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]")));
-		    Selectprofile.click();	    
-		    
 	        
-	     // Click on the switch element
-	        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-	        WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/switch1")));
-	        switchElement.click(); 
-	        System.out.println("Slot is Reserved ");
-	        
-	        
-	        // Click on the "Pay Now" button
-	        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-	        WebElement payNowButton = driver.findElement(By.id("com.eshaafi.patient.consultation:id/pay_now_button"));
-	        payNowButton.click();
-	        System.out.println("Wallet is Selected ");
-	        
-	        WebElement Gotohome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[2]")));
-	        System.out.println("Payment Successful ");
-	     	// Click on Pay Now
-	     	Gotohome.click();
-	     	System.out.println("Instant Call Booking Flow Completed ");
-	    }
+	     
 		
 		public void NewProfile(String name) {
 			

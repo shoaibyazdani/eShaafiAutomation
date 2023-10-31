@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-30T17:38:23 PKT" name="Default suite" finished-at="2023-10-30T17:39:00 PKT" duration-ms="36923">
+  <suite started-at="2023-10-31T18:12:17 PKT" name="Default suite" finished-at="2023-10-31T18:12:45 PKT" duration-ms="27878">
     <groups>
     </groups>
-    <test started-at="2023-10-30T17:38:23 PKT" name="Default test" finished-at="2023-10-30T17:39:00 PKT" duration-ms="36923">
+    <test started-at="2023-10-31T18:12:17 PKT" name="Default test" finished-at="2023-10-31T18:12:45 PKT" duration-ms="27878">
       <class name="Appiumpackage1.Appiumbasics">
-        <test-method is-config="true" signature="ConfigureAppium()[pri:0, instance:Appiumpackage1.Appiumbasics@62379589]" started-at="2023-10-30T17:38:23 PKT" name="ConfigureAppium" finished-at="2023-10-30T17:38:42 PKT" duration-ms="19027" status="PASS">
+        <test-method is-config="true" signature="ConfigureAppium()[pri:0, instance:Appiumpackage1.Appiumbasics@62379589]" started-at="2023-10-31T18:12:17 PKT" name="ConfigureAppium" finished-at="2023-10-31T18:12:39 PKT" duration-ms="22643" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ConfigureAppium -->
-        <test-method signature="AppiumTest()[pri:0, instance:Appiumpackage1.Appiumbasics@62379589]" started-at="2023-10-30T17:38:42 PKT" name="AppiumTest" finished-at="2023-10-30T17:39:00 PKT" duration-ms="17844" status="PASS">
+        <test-method signature="AppiumTest()[pri:0, instance:Appiumpackage1.Appiumbasics@62379589]" started-at="2023-10-31T18:12:39 PKT" name="AppiumTest" finished-at="2023-10-31T18:12:45 PKT" duration-ms="5183" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AppiumTest -->

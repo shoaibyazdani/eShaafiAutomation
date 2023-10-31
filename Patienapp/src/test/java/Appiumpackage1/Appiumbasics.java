@@ -21,13 +21,14 @@ public class Appiumbasics extends BaseTest {
     	
     	
     	
-//    	if (Login("3007777777", "999999")) {
-//    		BookNow(1);
+//    	if (Login("3066163246", "999999")) {
+    	//How many slots you want to book
+//    		BookNow(2);
 //    		NewProfile("Shoaib");
-//    		instantcall();
-    		checkwallet();
-    	    Logout();
-//    	    
+    		instantcall();
+//    		checkwallet();
+//    	    Logout();
+    	    
 //    	}
 
     	    
