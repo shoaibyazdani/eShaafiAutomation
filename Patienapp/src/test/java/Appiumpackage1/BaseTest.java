@@ -35,7 +35,7 @@ public class BaseTest {
 	@BeforeClass
 	public void ConfigureAppium() throws MalformedURLException {
 		
-		 service = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\LG\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+		 service = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\Shoaib\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
 				.withIPAddress("127.0.0.1").usingPort(4723).build();
 				service.start();
 		 
@@ -43,7 +43,7 @@ public class BaseTest {
 				
 				UiAutomator2Options options = new UiAutomator2Options();
 			
-				options.setDeviceName("Pixel 7");
+				options.setDeviceName("Pixel 7 pro");
 				options.setCapability("appPackage", "com.eshaafi.patient.consultation");
 				options.setCapability("appActivity", "com.eshaafi.patient.consultation.ui.auth.AuthActivity");
 				options.setCapability("appWaitActivity", "com.eshaafi.patient.consultation.ui.auth.AuthActivity");
@@ -55,8 +55,10 @@ public class BaseTest {
 				
 				
 				 driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
-				 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+				 //i have change this implicitlyWait from 30 to 5 for toast msg testing
+				 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 				 System.out.println("Eshaafi is now connected to Appium Server.");
+				 
 				 
 	}
 	//Login Flow
@@ -103,8 +105,8 @@ public class BaseTest {
 	
 	public void BookNow(int n) {
 		System.out.println("Book Now Flow is started");
-		for (int i = 2; i <= n; i++) {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		for (int i = 4; i <= n; i++) {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 	 	 //Wait for the element to be visible
 	 	WebElement BookNow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/book_appointments_button")));
@@ -113,12 +115,12 @@ public class BaseTest {
 	 	BookNow.click();
 	 	
 	 	
-	 	 wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	 	 wait = new WebDriverWait(driver, Duration.ofSeconds(2));
 	 	 //Scroll down
 	 	//driver.findElement (AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"SHA...\"));"));
 		
 	     // Click on second Profile of Doctor
-	     WebElement BookAppBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.Button")));
+	     WebElement BookAppBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Button")));
 	      System.out.println("Doctors List Shown..");
 	
 	     // Click the element
@@ -145,12 +147,13 @@ public class BaseTest {
 	List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
 
 	if (!toastMessageElements.isEmpty()) {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
 	    String messageText = toastMessage.getText();
 
 	    if (messageText.equals("Please select slot first")) {
-	        System.out.println("Toast message is correct: " + messageText);
+	        System.out.println("Oops the slot is already Booked :(");
+	        System.out.println("Selecting Next Slot");
 
 	        // Handle the case where the toast message is correct
 
@@ -164,7 +167,7 @@ public class BaseTest {
 	                By.id("com.eshaafi.patient.consultation:id/proceed_button")));
 
 	        try {
-	            Thread.sleep(3500); // Sleep for 3.5 seconds
+	            Thread.sleep(2500); // Sleep for 3.5 seconds
 	        } catch (InterruptedException e) {
 	            e.printStackTrace();
 	        }
@@ -173,13 +176,9 @@ public class BaseTest {
 	    }
 	} else {
 	    System.out.println("Toast message not found. Continuing with the next steps.");
-	    // Continue with the next steps
-	}
-
-
-	    // Continue with the next steps
- 
 	    
+	}
+    
 //	    String toastMessage= driver.findElement(By.xpath("(//android.widget.Toast)")).getAttribute( "name");
 	    
 //	    AssertJUnit.assertEquals(toastMessage, "Please select slot first");
@@ -203,9 +202,6 @@ public class BaseTest {
 	
 	 	// Click on Book Now
 	 	ProceedBtn1.click();
-	 	
-	 
-
 	 	
 	 	
 //	 	//Click on Pay now Button
