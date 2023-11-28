@@ -17,18 +17,66 @@ public class Appiumbasics extends BaseTest {
     public void AppiumTest() throws MalformedURLException {
         
 
-    	//NewProfile("Shoaib");
     	
     	
-   	BookNow(4);
     	
-//    	if (Login("3066163246", "999999")) {
-//    	//How many slots you want to book
-//    		BookNow(1);
+//		***************************************** Regression Testing *******************************************************************
+
+		if (signup("3063381177", "999999")) {
+		    		
+//		    		NewProfile();
+		    	//Allow all Permissions	
+		    		allowpermissions();
+		    		
+		    		Logout();
+		    		
+		    		Login("3063381177", "999999");
+		    		
+		    	//How many slots you want to book
+		    		BookNow(2);
+		    		
+		    	//NewProfile("Shoaib");
+		    		
+		    	//Call Instant Call Method
+		    		instantcall();
+		    		
+		    	//Check user's balance and record it
+		    		checkwallet();
+		    		
+		    	//Logout flow
+		    		Logout();
+		    		
+		    	       	}
+    	
+    	
+    	
+//    	newScenario();
+//    	NewProfile();
+    	
+    	
+//    	if (signup("3068981891", "999999")) {
+    		
+    	//	NewProfile();
+////    	//Allow all Permissions	
+//    		allowpermissions ();
+    		
+//    		Logout();
+    		
+//    		Login("3068981891", "999999");
+////    		
+////    	//How many slots you want to book
+////    		BookNow(1);
+//    		
 //    		//NewProfile("Shoaib");
+//    		
+//    	//Call Instant Call Method
 //    		instantcall();
+//    		
+//    	//Check user's balance and record it
 //    		checkwallet();
-//    	    Logout();
+//    		
+//    	//Logout flow
+    	    
 //    	       	}
 
     	    
@@ -54,61 +102,21 @@ public class Appiumbasics extends BaseTest {
 		    		
 		    	//Logout flow
 		    	//	Logout();
-//    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//    	WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
-//	            By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[1]/android.widget.TextView")));
-//        boolean isEnabled = element.isEnabled();
-//        if (isEnabled) {
-//            System.out.println("The button is enabled.");
-//            // Perform actions when the button is enabled
-//        } else {
-//            System.out.println("The button is disabled.");
-//            // Perform actions when the button is disabled
-//        }
-        
-		//toast();
+
     	
+    	//NewProfile("Shoaib");
+        
+    	//newScenario();
+    	
+//    	BookNowSub(1);
+//    	Subscription();
+// 
     
     	
 
     	
     	
         
-//     // Handle permissions dialogs
-//    	WebDriverWait  wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-//        for (int i = 1; i <= 3; i++) {
-//            WebElement allowButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.android.permissioncontroller:id/permission_allow_button")));
-//            allowButton.click();
-//        }
-//        
-//     // Click on the "Instant Call" button
-//    	WebDriverWait  wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//        WebElement InstantCallBtn = driver.findElement(By.id("com.eshaafi.patient.consultation:id/guide"));
-//        InstantCallBtn.click();
 //   
-//     // Wait for the "Proceed" button to appear and then click it
-//           wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//        WebElement proceedButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/proceed_button")));
-//        proceedButton.click();
-//
-//        
-//        
-//        
-//        
-//        
-//     // Click on the switch element
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-//        WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/switch1")));
-//        switchElement.click(); 
-//
-//        
-//
-//        
-//        
-//        
-//        // Click on the "Pay Now" button
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-//        WebElement payNowButton = driver.findElement(By.id("com.eshaafi.patient.consultation:id/pay_now_button"));
-//        payNowButton.click(); */
     }
 }
