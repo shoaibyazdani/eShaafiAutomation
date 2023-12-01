@@ -273,98 +273,20 @@ public class BaseTest {
 
 	
 	public void BookNow(int n) {
-		System.out.println("Book Now Flow is started");
-		for (int i = 1; i <= n; i++) {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-	 	 //Wait for the element to be visible
-	 	WebElement BookNow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/book_appointments_button")));
-	
-	 	// Click on Book Now
-	 	BookNow.click();
-	 	
-	 	
-	 	 wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	 	 //Scroll down
-	 	//driver.findElement (AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"SHA...\"));"));
 		
-	     // Click on second Profile of Doctor
-	     WebElement BookAppBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Button")));
-	      System.out.println("Doctors List Shown..");
-	
-	     // Click the element
-	     BookAppBtn.click();
-     
-	    // wait and Select second slot from the list
-	    WebElement slot = wait.until(ExpectedConditions.elementToBeClickable(
-	            By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView")));
-	   
-	    // Click on the slot
-	    slot.click();
-	    
-	 
-
-	 // Wait for "Proceed" button to be clickable
-	 WebElement proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
-	         By.id("com.eshaafi.patient.consultation:id/proceed_button")));
-	 proceedBtn.click();
-
-	 // Check if toast message appears
-	 wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-
-	// Check if the toast message element is present
-	List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
-
-	if (!toastMessageElements.isEmpty()) {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
-	    String messageText = toastMessage.getText();
-
-	    if (messageText.equals("Please select slot first")) {
-	        System.out.println("Oops the slot is already Booked :(");
-	        System.out.println("Selecting Next Slot");
-
-	        // Handle the case where the toast message is correct
-
-	        // Click on the next slot
-	        WebElement slot1 = wait.until(ExpectedConditions.elementToBeClickable(
-	                By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + (i + 1) + "]/android.widget.TextView")));
-	        slot1.click();
-
-	        // Wait for "Proceed" button to be clickable again
-	        proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
-	                By.id("com.eshaafi.patient.consultation:id/proceed_button")));
-
-	        try {
-	            Thread.sleep(2500); // Sleep for 2.5 seconds
-	        } catch (InterruptedException e) {
-	            e.printStackTrace();
-	        }
-
-	        proceedBtn.click();
-	    }
-	} else {
-	    System.out.println("Toast message not found. Continuing with the next steps.");
-	    
-	}
-    
-//	    String toastMessage= driver.findElement(By.xpath("(//android.widget.Toast)")).getAttribute( "name");
-	    
-//	    AssertJUnit.assertEquals(toastMessage, "Please select slot first");
-	    
-	    //Select Profile
-	    WebElement Selectprofile = wait.until(ExpectedConditions.elementToBeClickable(
-	             By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]")));
-	    Selectprofile.click();
-	    System.out.println("Slot Selection Successful ");
-
+		for (int i = 1; i <= n; i++)
+		{
+			
+			Bookflow(i);
+			
+			 WebDriverWait    wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	    WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(
 	             By.id("com.eshaafi.patient.consultation:id/switch1")));
 	     switchElement.click();
 	     System.out.println("Profile Selection Successful ");
 //	     
 //	  // Click on Proceed Button
-	     wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    
 	
 	 	// Wait for the element to be visible
 	 	WebElement ProceedBtn1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/pay_now_button")));
@@ -389,6 +311,11 @@ public class BaseTest {
  	
 		}
 }
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 //	***************************************** Instant Call Flow *******************************************************************
 
 		public void instantcall () {
@@ -520,99 +447,20 @@ public class BaseTest {
 		
 		
 		public void BookNowSub(int n) {
-			System.out.println("Book Now Flow is started");
-			for (int i = 2; i <= n; i++) {
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-		 	 //Wait for the element to be visible
-		 	WebElement BookNow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/book_appointments_button")));
-		
-		 	// Click on Book Now
-		 	BookNow.click();
-		 	
-		 	
-		 	 wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-		 	 //Scroll down
-		 	//driver.findElement (AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"SHA...\"));"));
 			
-		     // Click on second Profile of Doctor
-		     WebElement BookAppBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.Button")));
-		      System.out.println("Doctors List Shown..");
-		
-		     // Click the element
-		     BookAppBtn.click();
-	     
-		    // wait and Select second slot from the list
-		    WebElement slot = wait.until(ExpectedConditions.elementToBeClickable(
-		            By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView")));
-		   
-		    // Click on the slot
-		    slot.click();
-		    
-		 
-
-		 // Wait for "Proceed" button to be clickable
-		 WebElement proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
-		         By.id("com.eshaafi.patient.consultation:id/proceed_button")));
-		 proceedBtn.click();
-
-		 // Check if toast message appears
-		 wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-
-		// Check if the toast message element is present
-		List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
-
-		if (!toastMessageElements.isEmpty()) {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		    WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
-		    String messageText = toastMessage.getText();
-
-		    if (messageText.equals("Please select slot first")) {
-		        System.out.println("Oops the slot is already Booked :(");
-		        System.out.println("Selecting Next Slot");
-
-		        // Handle the case where the toast message is correct
-
-		        // Click on the next slot
-		        WebElement slot1 = wait.until(ExpectedConditions.elementToBeClickable(
-		                By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + (i + 1) + "]/android.widget.TextView")));
-		        slot1.click();
-
-		        // Wait for "Proceed" button to be clickable again
-		        proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
-		                By.id("com.eshaafi.patient.consultation:id/proceed_button")));
-
-		        try {
-		            Thread.sleep(2500); // Sleep for 3.5 seconds
-		        } catch (InterruptedException e) {
-		            e.printStackTrace();
-		        }
-
-		        proceedBtn.click();
+			for (int i = 1; i <= n; i++) {
+				
+				Bookflow(i);
 		    }
-		}
-		else {
-		    System.out.println("Toast message not found. Continuing with the next steps.");
-		    
-		}
-	    
-//		    String toastMessage= driver.findElement(By.xpath("(//android.widget.Toast)")).getAttribute( "name");
-		    
-//		    AssertJUnit.assertEquals(toastMessage, "Please select slot first");
-		    
-		    //Select Profile
-		    WebElement Selectprofile = wait.until(ExpectedConditions.elementToBeClickable(
-		             By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]")));
-		    Selectprofile.click();
-		    System.out.println("Slot Selection Successful ");
-
+			
+			WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(15));
 		    WebElement Subplan = wait.until(ExpectedConditions.elementToBeClickable(
 		             By.id("com.eshaafi.patient.consultation:id/plan_detail")));
 		     Subplan.click();
 		     System.out.println("Profile Selection Successful ");
 //		     
 //		  // Click on Proceed Button
-		     wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		    
 		
 		 	// Wait for the element to be visible
 		 	WebElement ProceedBtn1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/pay_now_button")));
@@ -622,7 +470,7 @@ public class BaseTest {
 		 	
 		 	
 //		 	//Click on Pay now Button
-		 	wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		 	
 	//	
 //		 	// Wait for the element to be visible
 //		 	WebElement PayNowBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.cardview.widget.CardView/android.view.ViewGroup/android.widget.Button")));
@@ -636,7 +484,7 @@ public class BaseTest {
 		 	System.out.println("Book now Flow is completed ");
 	 	
 			}
-	}
+	
 
 		
 //		public void swipeLeft() {
@@ -700,6 +548,7 @@ public class BaseTest {
 		    
 			
 			
+		    driver.navigate().back();
 		    driver.navigate().back();
 		}
 		
@@ -901,7 +750,96 @@ public class BaseTest {
         System.out.println("Permissions Allowed");
         
 	    }
-        
+	
+//	********************************** Reuseable code for Booking flow******************************************
+	
+	// I will Use this method when i need the booking flow untill payment Screen appear
+		public void Bookflow(int i){
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			System.out.println("Book Now Flow is started");
+	 	 //Wait for the element to be visible
+	 	WebElement BookNow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/book_appointments_button")));
+
+	 	// Click on Book Now
+	 	BookNow.click();
+	 	
+	 	
+	 	 wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	 	 //Scroll down
+	 	//driver.findElement (AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"SHA...\"));"));
+		
+	     // Click on second Profile of Doctor
+	     WebElement BookAppBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Button")));
+	      System.out.println("Doctors List Shown..");
+
+	     // Click the element
+	     BookAppBtn.click();
+	 
+	    // wait and Select second slot from the list
+	    WebElement slot = wait.until(ExpectedConditions.elementToBeClickable(
+	            By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView")));
+	   
+	    // Click on the slot
+	    slot.click();
+	    
+	 
+
+	 // Wait for "Proceed" button to be clickable
+	 WebElement proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
+	         By.id("com.eshaafi.patient.consultation:id/proceed_button")));
+	 proceedBtn.click();
+
+	 // Check if toast message appears
+	 wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+
+	// Check if the toast message element is present
+	List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
+
+	if (!toastMessageElements.isEmpty()) {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
+	    String messageText = toastMessage.getText();
+
+	    if (messageText.equals("Please select slot first")) {
+	        System.out.println("Oops the slot is already Booked :(");
+	        System.out.println("Selecting Next Slot");
+
+	        // Handle the case where the toast message is correct
+
+	        // Click on the next slot
+	        WebElement slot1 = wait.until(ExpectedConditions.elementToBeClickable(
+	                By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + (i + 1) + "]/android.widget.TextView")));
+	        slot1.click();
+
+	        // Wait for "Proceed" button to be clickable again
+	        proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
+	                By.id("com.eshaafi.patient.consultation:id/proceed_button")));
+
+	        try {
+	            Thread.sleep(2500); // Sleep for 2.5 seconds
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+
+	        proceedBtn.click();
+	    }
+	} else {
+	    System.out.println("Toast message not found. Continuing with the next steps.");
+	    
+	}
+
+//	    String toastMessage= driver.findElement(By.xpath("(//android.widget.Toast)")).getAttribute( "name");
+	    
+//	    AssertJUnit.assertEquals(toastMessage, "Please select slot first");
+	    
+	    //Select Profile
+	    WebElement Selectprofile = wait.until(ExpectedConditions.elementToBeClickable(
+	             By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]")));
+	    Selectprofile.click();
+	    System.out.println("Slot Selection Successful ");
+			
+		}
+		
         
         
         
