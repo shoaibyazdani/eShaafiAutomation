@@ -14,109 +14,49 @@ import java.time.Duration;
 public class Appiumbasics extends BaseTest {
     
     @Test
-    public void AppiumTest() throws MalformedURLException {
+    public void AppiumTest() throws MalformedURLException, InterruptedException {
         
 
+//    	instantcall();
+//    	AddNewProfile();
     	
-    	
-    	
-//		***************************************** Regression Testing *******************************************************************
-
-		if (signup("3063381177", "999999")) {
+////		***************************************** Regression Testing *******************************************************************
+//
+//		if (Login("3066163246", "99999")) {
+////		    		
+//		    		
+//		    	//Allow all Permissions	
+//		    		allowpermissions();
+//		    		
+//		    		
+//		    		
+////		    	//User will logout
+//		    		//Logout();
+//		    		
+//		   		// Login With new account details
+//		    		//Login("3066163246", "999999");
+//		    		
+//		    	//How many slots you want to book
+//		    		BookNow(1);
+//		    		
+//		    	//Call Instant Call Method
+//		    		instantcall();
+//    	
+//    			//Medical Record Caputre image and upload
+    				MedicalRecord();
+//		    		
+//		    	//Check user's balance and record it
+//		    		checkwallet();
+//		    		
+//		    	//Logout flow
+//		    		Logout();
 		    		
-//		    		NewProfile();
-		    	//Allow all Permissions	
-		    		allowpermissions();
 		    		
-		    		Logout();
-		    		
-		    		Login("3063381177", "999999");
-		    		
-		    	//How many slots you want to book
-		    		BookNow(2);
-		    		
-		    	//NewProfile("Shoaib");
-		    		
-		    	//Call Instant Call Method
-		    		instantcall();
-		    		
-		    	//Check user's balance and record it
-		    		checkwallet();
-		    		
-		    	//Logout flow
-		    		Logout();
-		    		
-		    	       	}
-    	
-    	
-    	
-//    	newScenario();
-//    	NewProfile();
-    	
-    	
-//    	if (signup("3068981891", "999999")) {
-    		
-    	//	NewProfile();
-////    	//Allow all Permissions	
-//    		allowpermissions ();
-    		
-//    		Logout();
-    		
-//    		Login("3068981891", "999999");
-////    		
-////    	//How many slots you want to book
-////    		BookNow(1);
-//    		
-//    		//NewProfile("Shoaib");
-//    		
-//    	//Call Instant Call Method
-//    		instantcall();
-//    		
-//    	//Check user's balance and record it
-//    		checkwallet();
-//    		
-//    	//Logout flow
-    	    
-//    	       	}
-
-    	    
-    	
-		    	//Login Using Method in BaseTest
-//		    	 	 Login("3066163246","999999");
-		
-		    	 	
-		    	 	
-
-		    	 	 
-		    	 	 
-		    	
-		    	//Call Instant Call Method
-		    	//	instantcall();
-		    	
-		    	
-		    	//Call Book now Method
-		    		//BookNow(5);
-		    		
-		    	//Check user's balance and record it
-		    	//	checkwallet();
-		    		
-		    	//Logout flow
-		    	//	Logout();
-
-    	
-    	//NewProfile("Shoaib");
-        
-    	//newScenario();
-    	
-//    	BookNowSub(1);
-//    	Subscription();
-// 
-    
-    	
-
+//		    	       	}
+//    	
     	
     	
         
-//   
+ 
     }
 }

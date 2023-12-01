@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\Shoaib\AppData\Local\Temp\testng-eclipse--1933338255\testng-customsuite.xml</span>
+                    <span>C:\Users\Shoaib\AppData\Local\Temp\testng-eclipse-12989317\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -129,16 +129,33 @@
                   <a name="AppiumTest">
                   </a> <!-- AppiumTest -->
                   <span class="method-name">AppiumTest</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: com.android.permissioncontroller:id/permission_allow_foreground_only_button (tried for 30 second(s) with 500 milliseconds interval)
+                  <div class="stack-trace">org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
 Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.9&apos;
 Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:appActivity: com.eshaafi.patient.consult..., appium:appPackage: com.eshaafi.patient.consult..., appium:appWaitActivity: com.eshaafi.patient.consult..., appium:automationName: UIAutomator2, appium:chromedriverExecutable: //Users//Shoaib\Downloads\c..., appium:databaseEnabled: false, appium:desired: {appActivity: com.eshaafi.patient.consult..., appPackage: com.eshaafi.patient.consult..., appWaitActivity: com.eshaafi.patient.consult..., automationName: UIAutomator2, chromedriverExecutable: //Users//Shoaib\Downloads\c..., deviceName: Pixel 7 pro, enableMultiWindows: true, fullReset: false, noReset: true, platformName: ANDROID, setWebContentsDebuggingEnabled: true}, appium:deviceApiLevel: 31, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone64_x86_64, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 420, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: emulator-5554, appium:enableMultiWindows: true, appium:fullReset: false, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2.625, appium:platformVersion: 12, appium:setWebContentsDebuggingEnabled: true, appium:statBarHeight: 63, appium:takesScreenshot: true, appium:viewportRect: {height: 2211, left: 0, top: 63, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: c87ee400-a569-4677-ad43-be4da19c1dd1
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
-	at Appiumpackage1.BaseTest.signup(BaseTest.java:250)
-	at Appiumpackage1.Appiumbasics.AppiumTest(Appiumbasics.java:25)
+Command: [0598757c-262a-4e3b-8d3e-70b4ac2deec0, findElement {using=id, value=com.eshaafi.patient.consultation:id/medical_history_layout}]
+Capabilities {appium:appActivity: com.eshaafi.patient.consult..., appium:appPackage: com.eshaafi.patient.consult..., appium:appWaitActivity: com.eshaafi.patient.consult..., appium:automationName: UIAutomator2, appium:chromedriverExecutable: //Users//Shoaib\Downloads\c..., appium:databaseEnabled: false, appium:desired: {appActivity: com.eshaafi.patient.consult..., appPackage: com.eshaafi.patient.consult..., appWaitActivity: com.eshaafi.patient.consult..., automationName: UIAutomator2, chromedriverExecutable: //Users//Shoaib\Downloads\c..., deviceName: OPPO CPH2421, enableMultiWindows: true, fullReset: false, noReset: true, platformName: ANDROID, setWebContentsDebuggingEnabled: true}, appium:deviceApiLevel: 30, appium:deviceManufacturer: OPPO, appium:deviceModel: CPH2421, appium:deviceName: adb-INIB7PI7JRN7Q8BU-UND06T..., appium:deviceScreenDensity: 320, appium:deviceScreenSize: 720x1600, appium:deviceUDID: adb-INIB7PI7JRN7Q8BU-UND06T..., appium:enableMultiWindows: true, appium:fullReset: false, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2, appium:platformVersion: 11, appium:setWebContentsDebuggingEnabled: true, appium:statBarHeight: 64, appium:takesScreenshot: true, appium:viewportRect: {height: 1392, left: 0, top: 64, width: 720}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 0598757c-262a-4e3b-8d3e-70b4ac2deec0
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	at Appiumpackage1.BaseTest.MedicalRecord(BaseTest.java:661)
+	at Appiumpackage1.Appiumbasics.AppiumTest(Appiumbasics.java:46)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -176,7 +193,7 @@ Session ID: c87ee400-a569-4677-ad43-be4da19c1dd1
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Shoaib\AppData\Local\Temp\testng-eclipse--1933338255\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\Shoaib\AppData\Local\Temp\testng-eclipse-12989317\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -229,12 +246,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'AppiumTest')
 data.setCell(0, 2, 'Appiumpackage1.Appiumbasics')
-data.setCell(0, 3, 60021);
+data.setCell(0, 3, 278);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 278 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -269,7 +286,7 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">AppiumTest</span>
-                <span class="method-start">15318 ms</span>
+                <span class="method-start">11563 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
