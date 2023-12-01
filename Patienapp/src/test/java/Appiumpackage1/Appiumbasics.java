@@ -27,7 +27,7 @@ public class Appiumbasics extends BaseTest {
 //		    		
 		    		
 		    	//Allow all Permissions	
-		    		allowpermissions();
+		    	//	allowpermissions();
 		    		
 		    		
 		    		
@@ -38,7 +38,7 @@ public class Appiumbasics extends BaseTest {
 		    		//Login("3066163246", "999999");
 		    		
 		    	//How many slots you want to book
-		    		BookNowSub(1);
+		    		//BookNowSub(1);
 		    		
 		    	//Call Instant Call Method
 		    		instantcall();
@@ -55,9 +55,31 @@ public class Appiumbasics extends BaseTest {
 		    		
 		    	       	}
 //    	
-    	
-    	
-        
- 
+//  						**************List of all Methods**************
+		
+					// Login With new account details
+						//Login("3066163246", "999999");
+		
+					//Logout flow
+						//Logout();
+		
+					//Book now Method with wallet change Value as per your need
+						//BookNow(1);
+		
+					//Book now Method with Subscription Plan change Value as per your need
+						//BookNowSub(1);
+						
+					//Call Instant Call Method
+						//instantcall();
+		
+					//Medical Record Caputre image and upload
+						//MedicalRecord();	
+								
+					//Check user's balance and record it		
+						//checkwallet();
+		
+					//Logout flow
+						//Logout();
+					
     }
 }

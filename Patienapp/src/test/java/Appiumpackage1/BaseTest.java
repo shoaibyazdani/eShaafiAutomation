@@ -176,7 +176,7 @@ public class BaseTest {
 		
 //		***************************************** SIGNUP Flow *******************************************************************
 		
-				public boolean signup(String phoneNumber, String otp) {
+				public boolean Signup(String phoneNumber, String otp) {
 					
 				    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
@@ -199,58 +199,14 @@ public class BaseTest {
 				        WebElement otpField = driver.findElement(By.id("com.eshaafi.patient.consultation:id/otp" + (i + 1) + "_textview"));
 				        otpField.sendKeys(String.valueOf(otp.charAt(i)));
 				    }
-				    
-				  //Full name
-					 WebElement Name = driver.findElement(By.id("com.eshaafi.patient.consultation:id/name_edittext"));
-				    Name.sendKeys("Shoaib Yazdani");
-				    
-				    
-				  //DOb
-				    WebElement DOB = driver.findElement(By.id("com.eshaafi.patient.consultation:id/date_textView"));
-				    DOB.click();
-				    System.out.println("DOB Selected");
-//				    WebElement month = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[1]/android.widget.Button[1]"));
-//				    month.click();
-//				    
-//				    WebElement day = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[2]/android.widget.Button[1]"));
-//				    day.click();
-//				    
-//				    WebElement year = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[3]/android.widget.Button"));
-//				    year.click();
-//				    
-				    WebElement Okbtn = driver.findElement(By.id("com.eshaafi.patient.consultation:id/ok_btn"));
-				    Okbtn.click();
-				    
+				    //This method is called to filll the data in signup form
+				    Sigupdata();
 					
-					
-					//Gender
-					// Locate the Gender dropdown element and click it
-					WebElement genderDropdown = driver.findElement(By.id("com.eshaafi.patient.consultation:id/text_input_end_icon"));
-					genderDropdown.click();
-					
-					
-					
-//					WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-					
-					// Find all elements within the dropdown
-					// Find the option "Male" and click it
-					WebElement maleOption = driver.findElement(By.xpath("//android.widget.TextView[@text='Male']"));
-					maleOption.click();
-					System.out.println("Gender is Selected");
-					
-					WebElement City = driver.findElement(By.id("com.eshaafi.patient.consultation:id/location_text"));
-					City.sendKeys("Lahore");
-					
-					System.out.println("City Added");
-					//Relation
-//				    WebElement Relation = driver.findElement(By.id("com.eshaafi.patient.consultation:id/relation_spinner"));
-//				    Relation.click();
-//				    WebElement Maleoption = driver.findElement(By.xpath("//android.widget.TextView[@text='Son']"));
-//				    Maleoption.click();
 				    //Save Data
 				    WebElement Save = driver.findElement(By.id("com.eshaafi.patient.consultation:id/save_button"));
-				    Save.click();
+				    Save.click();				  
 				    System.out.println("Save Button Clicked");
+				    
 //				    // Check if OTP is correct (5 characters are expected)
 				    if (otp.equals("999999")) {
 				        // Simulate login by checking if the home screen elements are visible after entering OTP
@@ -259,6 +215,8 @@ public class BaseTest {
 				        // Add additional assertions or actions for successful login
 				        System.out.println("Signup Successful ");
 				        return true;
+				        
+				        
 				    } else {
 				        // Fetch the error message for incorrect OTP
 				        WebElement errorMessage1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/error_textview")));
@@ -575,111 +533,42 @@ public class BaseTest {
 			//add profile
 			WebElement AddProfile = driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.eshaafi.patient.consultation:id/profile_image'][1]"));
 			AddProfile.click();
-
-//			
-//			
-//			//Full name
-			 WebElement phoneInput = driver.findElement(By.id("com.eshaafi.patient.consultation:id/name_edittext"));
-		    phoneInput.sendKeys("Shoaib Yazdani");
-		    
-		    
-		  //DOb
-		    WebElement DOB = driver.findElement(By.id("com.eshaafi.patient.consultation:id/date_textView"));
-		    DOB.click();
-//		    
-//		    WebElement month = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[1]/android.widget.Button[1]"));
-//		    month.click();
-//		    
-//		    WebElement day = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[2]/android.widget.Button[1]"));
-//		    day.click();
-//		    
-//		    WebElement year = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[3]/android.widget.Button"));
-//		    year.click();
-//		    
-		    WebElement Okbtn = driver.findElement(By.id("com.eshaafi.patient.consultation:id/ok_btn"));
-		    Okbtn.click();
 			
+			//Call this method when need to fill Signup form
+			Sigupdata();
 			
-			//Gender
-			// Locate the Gender dropdown element and click it
-			WebElement genderDropdown = driver.findElement(By.id("com.eshaafi.patient.consultation:id/text_input_end_icon"));
-			genderDropdown.click();
-			 wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			
-			// Find all elements within the dropdown
-			// Find the option "Male" and click it
-			WebElement maleOption = driver.findElement(By.xpath("//android.widget.TextView[@text='Male']"));
-			maleOption.click();
-			
-			WebElement City = driver.findElement(By.id("com.eshaafi.patient.consultation:id/location_text"));
-			City.sendKeys("Lahore");
-			
-			
-			//Relation
+			//Relation drop down
 		    WebElement Relation = driver.findElement(By.xpath("(//android.widget.ImageButton[@content-desc=\"Show dropdown menu\"])[2]"));
 		    Relation.click();
-		    WebElement Maleoption = driver.findElement(By.xpath("//android.widget.TextView[@text='Son']"));
-		    Maleoption.click();
+		    
+		    
+		    
+		    //Slect son from menu
+		    WebElement relation = driver.findElement(By.xpath("//android.widget.TextView[@text='Son']"));
+		    relation.click();
+		    
 		    //Save Data
 		    WebElement Save = driver.findElement(By.id("com.eshaafi.patient.consultation:id/save_button"));
-		    Save.click();
-	
-		    //Delete Process
-		    WebElement SelectProfile = driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id='com.eshaafi.patient.consultation:id/profile_image'])[2]"));
-			SelectProfile.click();
-			//Click Three dot Menu
-			WebElement Threedot = driver.findElement(By.id("com.eshaafi.patient.consultation:id/menu_imageview"));
-		    Threedot.click();
-		    
-		    //Delete Button Click
-		    WebElement Delete= driver.findElement(By.id("com.eshaafi.patient.consultation:id/title"));
-		    Delete.click();
-		    
-		    //Yes Option Click
-		    WebElement Yes = driver.findElement(By.id("com.eshaafi.patient.consultation:id/leave_button"));
-		    Yes.click();
-		    
+		    Save.click();   
 			
 		}
-	
-	public void slotstate() {
+	public void DeleteProfile() {
 		
-
-		
-
-		 
-            // Assuming you have located the slot TextView
-            WebElement slotTextView = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[1]/android.widget.TextView"));
-
-            // Check the color of the text view
-            String color = slotTextView.getCssValue("color");
-
-            System.out.println("Slot color:" + color);
-        }
-        
-
-	
-    
-
-	
-
-
-
-	
-
-	public void toast(){
-		
-		// Wait for toast message to appear
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Toast")));
-
-		// Retrieve the toast message
-		String toastMessage = driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.Toast\")")).getText();
-
-		// Print the toast message
-		System.out.println("Toast Message: " + toastMessage);
-
-}
+		 //Change numeric value if need to change any other profile
+	    WebElement SelectProfile = driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id='com.eshaafi.patient.consultation:id/profile_image'])[2]"));
+		SelectProfile.click();
+		//Click Three dot Menu
+		WebElement Threedot = driver.findElement(By.id("com.eshaafi.patient.consultation:id/menu_imageview"));
+	    Threedot.click();
+	    
+	    //Delete Button Click
+	    WebElement Delete= driver.findElement(By.id("com.eshaafi.patient.consultation:id/title"));
+	    Delete.click();
+	    
+	    //Yes Option Click
+	    WebElement Yes = driver.findElement(By.id("com.eshaafi.patient.consultation:id/leave_button"));
+	    Yes.click();
+	}
 
 
 	public void checkwallet() {
@@ -753,7 +642,7 @@ public class BaseTest {
 	
 //	********************************** Reuseable code for Booking flow******************************************
 	
-	// I will Use this method when i need the booking flow untill payment Screen appear
+		// I will Use this method when i need the booking flow untill payment Screen appear
 		public void Bookflow(int i){
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			System.out.println("Book Now Flow is started");
@@ -781,9 +670,7 @@ public class BaseTest {
 	   
 	    // Click on the slot
 	    slot.click();
-	    
-	 
-
+	
 	 // Wait for "Proceed" button to be clickable
 	 WebElement proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
 	         By.id("com.eshaafi.patient.consultation:id/proceed_button")));
@@ -840,6 +727,55 @@ public class BaseTest {
 			
 		}
 		
+		
+		//Call this method when need to fill Signup form
+		public void Sigupdata() {
+			
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			//Full name
+			 WebElement Name = driver.findElement(By.id("com.eshaafi.patient.consultation:id/name_edittext"));
+		    Name.sendKeys("Shoaib Yazdani");
+		    
+		    
+		  //DOb
+		    WebElement DOB = driver.findElement(By.id("com.eshaafi.patient.consultation:id/date_textView"));
+		    DOB.click();
+		    System.out.println("DOB Selected");
+//		    WebElement month = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[1]/android.widget.Button[1]"));
+//		    month.click();
+//		    
+//		    WebElement day = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[2]/android.widget.Button[1]"));
+//		    day.click();
+//		    
+//		    WebElement year = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[3]/android.widget.Button"));
+//		    year.click();
+//		    
+		    WebElement Okbtn = driver.findElement(By.id("com.eshaafi.patient.consultation:id/ok_btn"));
+		    Okbtn.click();
+		    
+			
+			
+			//Gender
+			// Locate the Gender dropdown element and click it
+			WebElement genderDropdown = driver.findElement(By.id("com.eshaafi.patient.consultation:id/text_input_end_icon"));
+			genderDropdown.click();
+			
+			
+			
+//			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			
+			// Find all elements within the dropdown
+			// Find the option "Male" and click it
+			WebElement maleOption = driver.findElement(By.xpath("//android.widget.TextView[@text='Male']"));
+			maleOption.click();
+			System.out.println("Gender is Selected");
+			
+			WebElement City = driver.findElement(By.id("com.eshaafi.patient.consultation:id/location_text"));
+			City.sendKeys("Lahore");
+			
+			System.out.println("City Added");
+			
+		}
         
         
         
