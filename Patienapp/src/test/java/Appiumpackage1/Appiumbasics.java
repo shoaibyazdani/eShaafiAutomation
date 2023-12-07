@@ -16,70 +16,77 @@ public class Appiumbasics extends BaseTest {
     @Test
     public void AppiumTest() throws MalformedURLException, InterruptedException {
         
-
-//    	instantcall();
 //    	AddNewProfile();
+//    	DeleteProfile();
+//    	Signup("999999");
+//    	Login("3066163246");
+//    	BookNow(1);
+//    	instantcall();
+//    	MedicalRecord();
+//    	Subscription();
 //    	BookNowSub(1);
+//    	Logout();
+//    	inputotp();
+    	Prescription();
     	
-////		***************************************** Regression Testing *******************************************************************
-//
-		if (Login("3066163246", "99999")) {
+//		***************************************** Regression Testing *******************************************************************
+
+		//if (Login("3066163246", "999999")) {
 //		    		
 		    		
 		    	//Allow all Permissions	
 		    	//	allowpermissions();
-		    		
-		    		
-		    		
-//		    	//User will logout
-		    		//Logout();
-		    		
-		   		// Login With new account details
-		    		//Login("3066163246", "999999");
-		    		
+	   		
 		    	//How many slots you want to book
-		    		//BookNowSub(1);
-		    		
+//		    		BookNowSub(1);
+//		    		BookNow(1);
 		    	//Call Instant Call Method
-		    		instantcall();
+//		    		instantcall();
     	
     			//Medical Record Caputre image and upload
-    				MedicalRecord();
+//    				MedicalRecord();
 		    		
 		    	//Check user's balance and record it
-		    		checkwallet();
+//		    		checkwallet();
 		    		
 		    	//Logout flow
-		    		Logout();
+//		    		Logout();
+    	
 		    		
-		    		
-		    	       	}
-//    	
-//  						**************List of all Methods**************
+		 //  	}
+   	
 		
-					// Login With new account details
-						//Login("3066163246", "999999");
 		
-					//Logout flow
-						//Logout();
 		
-					//Book now Method with wallet change Value as per your need
-						//BookNow(1);
 		
-					//Book now Method with Subscription Plan change Value as per your need
-						//BookNowSub(1);
-						
-					//Call Instant Call Method
-						//instantcall();
+//  		**************List of all Methods**************
 		
-					//Medical Record Caputre image and upload
-						//MedicalRecord();	
+							// Login With new account details
+								//Login("3066163246", "999999");
+				
+							//Logout flow
+								//Logout();
+				
+							//Book now Method with wallet change Value as per your need
+								//BookNow(1);
+				
+							//Book now Method with Subscription Plan change Value as per your need
+								//BookNowSub(1);
 								
-					//Check user's balance and record it		
-						//checkwallet();
+							//Call Instant Call Method
+								//instantcall();
 		
-					//Logout flow
-						//Logout();
+							//Buy Subscription plan Using JAzzcash
+								//Subscription();
+				
+							//Medical Record Caputre image and upload
+								//MedicalRecord();	
+										
+							//Check user's balance and record it		
+								//checkwallet();
+				
+							//Logout flow
+								//Logout();
 					
     }
 }

@@ -11,16 +11,19 @@ import io.appium.java_client.android.Activity;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
+
 public class instantcall extends BaseTest {
-    
+	
+	public static final String Sidemenuico = "com.eshaafi.patient.consultation:id/left_imageview";
+	
     @Test
     public void AppiumTest() throws MalformedURLException {
         
 
     	
     	//Login Using Method in BaseTest
-    	   Login("3066163246","999999");
-
+    	   Login("3066163246");
+    	
     	
     	/*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 

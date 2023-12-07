@@ -1,86 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-01T15:22:44 PKT" name="Default suite" finished-at="2023-12-01T15:22:56 PKT" duration-ms="11875">
+  <suite started-at="2023-12-07T12:47:14 PKT" name="Default suite" finished-at="2023-12-07T12:47:45 PKT" duration-ms="31289">
     <groups>
     </groups>
-    <test started-at="2023-12-01T15:22:44 PKT" name="Default test" finished-at="2023-12-01T15:22:56 PKT" duration-ms="11875">
+    <test started-at="2023-12-07T12:47:14 PKT" name="Default test" finished-at="2023-12-07T12:47:45 PKT" duration-ms="31289">
       <class name="Appiumpackage1.Appiumbasics">
-        <test-method is-config="true" signature="ConfigureAppium()[pri:0, instance:Appiumpackage1.Appiumbasics@4be29ed9]" started-at="2023-12-01T15:22:44 PKT" name="ConfigureAppium" finished-at="2023-12-01T15:22:56 PKT" duration-ms="11671" status="PASS">
+        <test-method is-config="true" signature="ConfigureAppium()[pri:0, instance:Appiumpackage1.Appiumbasics@548d708a]" started-at="2023-12-07T12:47:14 PKT" name="ConfigureAppium" finished-at="2023-12-07T12:47:34 PKT" duration-ms="20079" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ConfigureAppium -->
-        <test-method signature="AppiumTest()[pri:0, instance:Appiumpackage1.Appiumbasics@4be29ed9]" started-at="2023-12-01T15:22:56 PKT" name="AppiumTest" finished-at="2023-12-01T15:22:56 PKT" duration-ms="158" status="FAIL">
-          <exception class="org.openqa.selenium.WebDriverException">
-            <message>
-              <![CDATA[An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-Build info: version: '4.11.0', revision: '040bc5406b'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.9'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [27210605-36a0-476d-a5f5-9bc3f5fa9443, findElement {using=id, value=com.eshaafi.patient.consultation:id/medical_history_layout}]
-Capabilities {appium:appActivity: com.eshaafi.patient.consult..., appium:appPackage: com.eshaafi.patient.consult..., appium:appWaitActivity: com.eshaafi.patient.consult..., appium:automationName: UIAutomator2, appium:chromedriverExecutable: //Users//Shoaib\Downloads\c..., appium:databaseEnabled: false, appium:desired: {appActivity: com.eshaafi.patient.consult..., appPackage: com.eshaafi.patient.consult..., appWaitActivity: com.eshaafi.patient.consult..., automationName: UIAutomator2, chromedriverExecutable: //Users//Shoaib\Downloads\c..., deviceName: OPPO CPH2421, enableMultiWindows: true, fullReset: false, noReset: true, platformName: ANDROID, setWebContentsDebuggingEnabled: true}, appium:deviceApiLevel: 30, appium:deviceManufacturer: OPPO, appium:deviceModel: CPH2421, appium:deviceName: adb-INIB7PI7JRN7Q8BU-UND06T..., appium:deviceScreenDensity: 320, appium:deviceScreenSize: 720x1600, appium:deviceUDID: adb-INIB7PI7JRN7Q8BU-UND06T..., appium:enableMultiWindows: true, appium:fullReset: false, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2, appium:platformVersion: 11, appium:setWebContentsDebuggingEnabled: true, appium:statBarHeight: 64, appium:takesScreenshot: true, appium:viewportRect: {height: 1392, left: 0, top: 64, width: 720}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 27210605-36a0-476d-a5f5-9bc3f5fa9443]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to the remote server. Original error: socket hang up
-Build info: version: '4.11.0', revision: '040bc5406b'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.9'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [27210605-36a0-476d-a5f5-9bc3f5fa9443, findElement {using=id, value=com.eshaafi.patient.consultation:id/medical_history_layout}]
-Capabilities {appium:appActivity: com.eshaafi.patient.consult..., appium:appPackage: com.eshaafi.patient.consult..., appium:appWaitActivity: com.eshaafi.patient.consult..., appium:automationName: UIAutomator2, appium:chromedriverExecutable: //Users//Shoaib\Downloads\c..., appium:databaseEnabled: false, appium:desired: {appActivity: com.eshaafi.patient.consult..., appPackage: com.eshaafi.patient.consult..., appWaitActivity: com.eshaafi.patient.consult..., automationName: UIAutomator2, chromedriverExecutable: //Users//Shoaib\Downloads\c..., deviceName: OPPO CPH2421, enableMultiWindows: true, fullReset: false, noReset: true, platformName: ANDROID, setWebContentsDebuggingEnabled: true}, appium:deviceApiLevel: 30, appium:deviceManufacturer: OPPO, appium:deviceModel: CPH2421, appium:deviceName: adb-INIB7PI7JRN7Q8BU-UND06T..., appium:deviceScreenDensity: 320, appium:deviceScreenSize: 720x1600, appium:deviceUDID: adb-INIB7PI7JRN7Q8BU-UND06T..., appium:enableMultiWindows: true, appium:fullReset: false, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2, appium:platformVersion: 11, appium:setWebContentsDebuggingEnabled: true, appium:statBarHeight: 64, appium:takesScreenshot: true, appium:viewportRect: {height: 1392, left: 0, top: 64, width: 720}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 27210605-36a0-476d-a5f5-9bc3f5fa9443
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
-at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
-at Appiumpackage1.BaseTest.MedicalRecord(BaseTest.java:509)
-at Appiumpackage1.Appiumbasics.AppiumTest(Appiumbasics.java:47)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
+        <test-method signature="AppiumTest()[pri:0, instance:Appiumpackage1.Appiumbasics@548d708a]" started-at="2023-12-07T12:47:34 PKT" name="AppiumTest" finished-at="2023-12-07T12:47:45 PKT" duration-ms="11121" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AppiumTest -->
