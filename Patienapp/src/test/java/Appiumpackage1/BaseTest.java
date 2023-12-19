@@ -2,6 +2,9 @@ package Appiumpackage1;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import Appiumpackage.LoginScreen;
+
 import org.testng.AssertJUnit;
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -40,12 +43,18 @@ import static Appiumpackage1.Variablesclass.*;
 import static Appiumpackage1.AddOTP.*;
 
 public class BaseTest {
-
+	
+	
+	
 	public AndroidDriver driver;
 	public AppiumDriverLocalService service;
+	
+	
 
 	@BeforeClass
 	public void ConfigureAppium() throws MalformedURLException {
+		
+		
 
 		service = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\Shoaib\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
 				.withIPAddress("127.0.0.1").usingPort(4723).build();
@@ -80,37 +89,27 @@ public class BaseTest {
 
 	}
 	
+
+	
 	
 	
 	
 	//Login Flow
-	public boolean Login(String phoneNumber) {
+	public boolean Login() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-		// Find and enter the phone number
-		WebElement phoneInput = driver.findElement(By.id(PhoneNofield));
-		phoneInput.sendKeys(phoneNumber);
-		System.out.println("Entring Phone No.");
-
-
-		// Continue button is enabled, proceed
-		WebElement continueButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Createaccountbtn)));
-
-		continueButton.click();
-		System.out.println("Entring OTP");
-		WebElement otpField = driver.findElement(By.id("com.eshaafi.patient.consultation:id/otp1_textview"));
-		otpField.click();	
+		//Used Page object Pattern
+		LoginScreen  loginscreen = new LoginScreen(driver);
+		loginscreen.enterphoneNo("3066163246");
+		loginscreen.ClickContinue();
+		loginscreen.Clickotpfield();
 		
+//		/Command line Approach to enter otp
 		String otpValue = "999999";
 		AddOTP.enterText(otpValue);
 		
+//		loginscreen.SelectProfile();
 		
-
-//		// Enter the OTP
-//		for (int i = 0; i < otp.length(); i++) {
-//			WebElement otpField = driver.findElement(By.id("com.eshaafi.patient.consultation:id/otp" + (i + 1) + "_textview"));
-//			otpField.sendKeys(String.valueOf(otp.charAt(i)));
-//		}
 
 		// Check if OTP is correct (5 characters are expected)
 		if (otpValue.equals("999999")) {
@@ -127,6 +126,42 @@ public class BaseTest {
 			System.out.println("Error Message: " + errorText);
 			return false;
 		}
+
+		//		WebElement phoneInput = driver.findElement(By.id(PhoneNofield));
+		//		phoneInput.sendKeys(phoneNumber);
+		//		System.out.println("Entring Phone No.");
+		//		// Continue button is enabled, proceed
+		//		WebElement continueButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Createaccountbtn)));
+		//
+		//		continueButton.click();
+		//		System.out.println("Entring OTP");
+		//		WebElement OtpField = driver.findElement(By.id("com.eshaafi.patient.consultation:id/otp1_textview"));
+		//		OtpField.click();	
+		//		
+
+		//		// Enter the OTP
+		//		for (int i = 0; i < otp.length(); i++) {
+		//			WebElement otpField = driver.findElement(By.id("com.eshaafi.patient.consultation:id/otp" + (i + 1) + "_textview"));
+		//			otpField.sendKeys(String.valueOf(otp.charAt(i)));
+		//		}
+		// Check if OTP is correct (5 characters are expected)
+		//				if (otpValue.equals("999999")) {
+		//					// Simulate login by checking if the home screen elements are visible after entering OTP
+		//					WebElement homeScreenElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(InstantCallBtn)));
+		//
+		//					// Add additional assertions or actions for successful login
+		//					System.out.println("Login Successful ");
+		//					return true;
+		//				} else {
+		//					// Fetch the error message for incorrect OTP
+		//					WebElement errorMessage1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ErrorMessage)));
+		//					String errorText = errorMessage1.getText();
+		//					System.out.println("Error Message: " + errorText);
+		//					return false;
+		//				}
+//		
+		
+		
 	}
 
 
@@ -134,8 +169,10 @@ public class BaseTest {
 	//		***************************************** SIGNUP Flow *******************************************************************
 	//This method Auto genrate a number everytime i start
 	public boolean Signup(String otp) {
+		
+		LoginScreen loginscreen = new LoginScreen(driver);
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		{
 			// Generate a random phone number with the prefix "306" and random digits
@@ -150,6 +187,8 @@ public class BaseTest {
 			// Continue button is enabled, proceed
 			WebElement continueButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Createaccountbtn)));
 			continueButton.click();
+			
+			loginscreen.Clickotpfield();
 
 			
 			System.out.println("Entering OTP");
@@ -172,24 +211,25 @@ public class BaseTest {
 			WebElement Save = driver.findElement(By.id("com.eshaafi.patient.consultation:id/save_button"));
 			Save.click();				  
 			System.out.println("Save Button Clicked");
+			return true;
 
 			//		    // Check if OTP is correct (5 characters are expected)
-			if (otpValue.equals("999999")) {
-				// Simulate login by checking if the home screen elements are visible after entering OTP
-				WebElement homeScreenElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button")));
-				//
-				// Add additional assertions or actions for successful login
-				System.out.println("Signup Successful ");
-				return true;
-
-
-			} else {
-				// Fetch the error message for incorrect OTP
-				WebElement errorMessage1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ErrorMessage)));
-				String errorText = errorMessage1.getText();
-				System.out.println("Error Message: " + errorText);
-				return false;
-			}
+//			if (otpValue.equals("999999")) {
+//				// Simulate login by checking if the home screen elements are visible after entering OTP
+//				WebElement homeScreenElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button")));
+//				//
+//				// Add additional assertions or actions for successful login
+//				System.out.println("Signup Successful ");
+//				return true;
+//
+//
+//			} else {
+//				// Fetch the error message for incorrect OTP
+//				WebElement errorMessage1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ErrorMessage)));
+//				String errorText = errorMessage1.getText();
+//				System.out.println("Error Message: " + errorText);
+//				return false;
+//			}
 		}
 	}
 
@@ -424,19 +464,20 @@ public class BaseTest {
 		WebElement medicalRecords = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(medicalRecordsId)));
 		medicalRecords.click();
 
-		WebElement profile = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(profileImageXpath)));
-		profile.click();
+//		WebElement profile = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(profileImageXpath)));
+//		profile.click();
 
 		WebElement addMedical = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(addRecordButtonId)));
 		addMedical.click();
 
 		WebElement camera = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(OpenCameraID)));
 		camera.click();
+		
+		Thread.sleep(2000);
 		//Press Volume up button to capture a image
 		driver.pressKey(new KeyEvent().withKey(AndroidKey.VOLUME_UP));
 		//I have added thread sleep to prevent speed clicking
-		Thread.sleep(2000);
-
+		
 		// Using this method to click tick sign after capture photo
 		hardStopWait(1000);
 		driver.pressKey(new KeyEvent(AndroidKey.TAB));
@@ -459,7 +500,9 @@ public class BaseTest {
 
 
 
-		driver.navigate().back();
+		WebElement backbtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
+		backbtn.click();
+		
 		driver.navigate().back();
 	}
 
@@ -492,7 +535,7 @@ public class BaseTest {
 		
 		System.out.println("going Back to Home");
 		
-		WebElement BackBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PrescriptionBackBtnId)));
+		WebElement BackBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
 		BackBtn.click();
 		
 		driver.navigate().back();
@@ -507,9 +550,9 @@ public class BaseTest {
 
 
 
-	public void AddNewProfile() {
+	public void AddnDeleteProfile() {
 
-
+		LoginScreen  loginscreen = new LoginScreen(driver);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement sidemenu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(sidemenuId)));
 		sidemenu.click();
@@ -535,6 +578,27 @@ public class BaseTest {
 		// Save Data
 		WebElement saveButton = driver.findElement(By.id(saveButtonId));
 		saveButton.click();  
+		
+		//Delete Profile
+				WebElement SelectProfile = driver.findElement(By.xpath(selectProfileId));
+				SelectProfile.click();
+				//Click Three dot Menu
+				WebElement Threedot = driver.findElement(By.id(threeDotMenuId));
+				Threedot.click();
+
+				//Delete Button Click
+				WebElement Delete= driver.findElement(By.id(deleteButtonId));
+				Delete.click();
+
+				//Yes Option Click
+				WebElement Yes = driver.findElement(By.id(yesOptionId));
+				Yes.click();
+				WebElement BackBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
+				BackBtn.click();
+				
+//				loginscreen.SelectProfile();
+				
+				driver.navigate().back();
 
 	}
 
@@ -716,10 +780,12 @@ public class BaseTest {
 
 	//Call this method when need to fill Signup form
 	public void Sigupdata() {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 
 		//Full name
-		WebElement Name = driver.findElement(By.id("com.eshaafi.patient.consultation:id/name_edittext"));
+		WebElement Name =wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/name_edittext")));
 		Name.sendKeys("Shoaib Yazdani");
 
 

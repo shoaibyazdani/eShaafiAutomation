@@ -10,51 +10,52 @@ import io.appium.java_client.android.Activity;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
+import Appiumpackage.LoginScreen;
 
 public class Appiumbasics extends BaseTest {
     
     @Test
     public void AppiumTest() throws MalformedURLException, InterruptedException {
+    	
+    	LoginScreen loginscreen = new LoginScreen(driver);
         
-//    	AddNewProfile();
-//    	DeleteProfile();
-//    	Signup("999999");
-//    	Login("3066163246");
-//    	BookNow(1);
-//    	instantcall();
-//    	MedicalRecord();
-//    	Subscription();
-//    	BookNowSub(1);
-//    	Logout();
-//    	inputotp();
-    	Prescription();
+//    	
     	
 //		***************************************** Regression Testing *******************************************************************
 
-		//if (Login("3066163246", "999999")) {
+//			
+//					
+			        
+			       
+			if (Login()) {
 //		    		
 		    		
 		    	//Allow all Permissions	
-		    	//	allowpermissions();
+		    		allowpermissions();		
 	   		
 		    	//How many slots you want to book
 //		    		BookNowSub(1);
-//		    		BookNow(1);
+		    		
+		    		BookNow(1);
+		    		
 		    	//Call Instant Call Method
-//		    		instantcall();
-    	
-    			//Medical Record Caputre image and upload
-//    				MedicalRecord();
+		    		instantcall();
 		    		
 		    	//Check user's balance and record it
-//		    		checkwallet();
+		    		checkwallet();
+		    		
+		    	//to Add and Delete Profile
+		    		AddnDeleteProfile();
+		    		
+		    		Prescription();
 		    		
 		    	//Logout flow
-//		    		Logout();
-    	
+		    		Logout();
 		    		
-		 //  	}
-   	
+
+		    		
+		   	}
+		
 		
 		
 		

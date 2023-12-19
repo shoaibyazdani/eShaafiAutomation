@@ -22,7 +22,7 @@ public class instantcall extends BaseTest {
 
     	
     	//Login Using Method in BaseTest
-    	   Login("3066163246");
+//    	   Login();
     	
     	
     	/*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));

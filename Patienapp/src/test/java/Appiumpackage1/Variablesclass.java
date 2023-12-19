@@ -90,7 +90,7 @@ public class Variablesclass {
 	public static final String PrescriptionHomeId = "com.eshaafi.patient.consultation:id/e_prescription_layout";
 	public static final String PrescriptionFirstitemId = "(//android.view.ViewGroup[@resource-id=\"com.eshaafi.patient.consultation:id/view_record\"])[1]";
 	public static final String PrescriptiondownloadId = "com.eshaafi.patient.consultation:id/right_textview";
-	public static final String PrescriptionBackBtnId = "com.eshaafi.patient.consultation:id/back_imageview";
+	public static final String BackButton = "com.eshaafi.patient.consultation:id/back_imageview";
 	public static final String PrescriptionOpenedId = "(//android.widget.FrameLayout[@resource-id=\"com.eshaafi.patient.consultation:id/nav_host\"])[2]/android.view.ViewGroup";
 
 	//Blog
