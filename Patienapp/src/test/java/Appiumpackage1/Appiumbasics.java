@@ -27,7 +27,7 @@ public class Appiumbasics extends BaseTest {
 //					
 			        
 			       
-			if (Login()) {
+			if (CorporateLogin()) {
 //		    		
 		    		
 //		    	//Allow all Permissions	
@@ -35,7 +35,7 @@ public class Appiumbasics extends BaseTest {
 //	   		
 //		    	//How many slots you want to book
 //		    		BookNowSub(1);
-//		    		
+//		    		CorporateLogin()
 		    		
 		    		BookNow(3);
 //		    		
@@ -53,10 +53,12 @@ public class Appiumbasics extends BaseTest {
 //		    	//Logout flow
 		    		Logout();
 		    		
+		    		Signup("999999");
+		    		
 
 		    		
 		   	}
-		
+//		
 		
 		
 		

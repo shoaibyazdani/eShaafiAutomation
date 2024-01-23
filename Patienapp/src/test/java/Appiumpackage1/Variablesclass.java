@@ -8,6 +8,7 @@ public class Variablesclass {
 	public static final String Createaccountbtn = "com.eshaafi.patient.consultation:id/create_account_button";
 	public static final String InstantCallBtn = "com.eshaafi.patient.consultation:id/guide";
 	public static final String ErrorMessage = "com.eshaafi.patient.consultation:id/error_textview";
+	public static final String CorporateLoginBtn = "com.eshaafi.patient.consultation:id/corporate_login";
 
 	//Instant Call flow
 	public static final String InstantCallBtn1 = "com.eshaafi.patient.consultation:id/guide";
@@ -99,5 +100,16 @@ public class Variablesclass {
 	public static final String FirstblogId = "(//android.view.ViewGroup[@resource-id=\"com.eshaafi.patient.consultation:id/textViews\"])[1]";
 	public static final String BackBtnId = "com.eshaafi.patient.consultation:id/left_imageview";
 
+	// Lab Flow
+	public static final String LabsTileID = "com.eshaafi.patient.consultation:id/lab_layout";
+	public static final String NameId = "com.eshaafi.patient.consultation:id/name_edittext";
+	public static final String DateId = "com.eshaafi.patient.consultation:id/date_textView";
+	public static final String TimeId = "com.eshaafi.patient.consultation:id/time_textview";
+	public static final String LabVisitId = "com.eshaafi.patient.consultation:id/labVisit";
+	public static final String HomeSamplingId = "com.eshaafi.patient.consultation:id/homeSampling";
+	public static final String SeleectLabId = "com.eshaafi.patient.consultation:id/text_input_end_icon";
+	public static final String SavebtnId = "com.eshaafi.patient.consultation:id/save_button";
+	
+	
 
 }

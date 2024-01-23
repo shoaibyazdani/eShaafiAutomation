@@ -109,8 +109,9 @@ public class BaseTest {
 //		/Command line Approach to enter otp
 		String otpValue = "999999";
 		AddOTP.enterText(otpValue);
-		
+		System.out.println("Before clicking Continue button");
 		loginscreen.SelectProfile();
+		System.out.println("After clicking Continue button");
 		
 		WebElement Instantcallicon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((InstantCallBtn))));
 		
@@ -120,7 +121,11 @@ public class BaseTest {
 		} else {
 		    System.out.println("Login Failed");
 		    return false;
+		    
 		}
+		
+		
+		
 		
 //		// Check if OTP is correct (5 characters are expected)
 //		if (otpValue.equals("999999")) {
@@ -174,6 +179,39 @@ public class BaseTest {
 		
 		
 	}
+	
+	//Login Flow
+		public boolean CorporateLogin() {
+			
+			
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+			//Used Page object Pattern
+			LoginScreen  loginscreen = new LoginScreen(driver);
+			WebElement CorporateBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((CorporateLoginBtn))));
+			CorporateBtn.click();
+			loginscreen.enterphoneNo("3066163246");
+			loginscreen.ClickContinue();
+			loginscreen.Clickotpfield();
+			
+//			/Command line Approach to enter otp
+			String otpValue = "999999";
+			AddOTP.enterText(otpValue);
+			System.out.println("Before clicking Continue button");
+			loginscreen.SelectProfile();
+			System.out.println("After clicking Continue button");
+			
+			WebElement Instantcallicon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((InstantCallBtn))));
+			
+			if (Instantcallicon!= null) {
+			    System.out.println("Login Success");
+			    return true;
+			} else {
+			    System.out.println("Login Failed");
+			    return false;
+			    
+			}
+		}
 
 
 
@@ -720,6 +758,8 @@ public class BaseTest {
 	public void Bookflow(int i){
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		System.out.println("Book Now Flow is started");
+		swipeDown();
+		System.out.println("Swiped Down");
 		//Wait for the element to be visible
 		WebElement BookNow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/book_appointments_button")));
 
@@ -797,6 +837,19 @@ public class BaseTest {
 		System.out.println("Slot Selection Successful ");
 
 	}
+	
+	// Function to perform a swipe down
+    protected void swipeDown() {
+    	 int screenWidth = driver.manage().window().getSize().getWidth();
+         int screenHeight = driver.manage().window().getSize().getHeight();
+         int startX = screenWidth / 2;
+         int startY = (int) (screenHeight * 0.5); // Start from the center of the screen
+         int endY = (int) (screenHeight * 0.8); // You can adjust the endY value based on your needs
+
+        @SuppressWarnings("deprecation")
+        TouchAction<?> touchAction = new TouchAction<>(driver);
+        touchAction.press(PointOption.point(startX, startY)).moveTo(PointOption.point(startX, endY)).release().perform();
+    }
 
 
 	//Call this method when need to fill Signup form
