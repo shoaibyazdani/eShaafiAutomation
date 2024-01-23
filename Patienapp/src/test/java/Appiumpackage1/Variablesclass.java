@@ -10,6 +10,7 @@ public class Variablesclass {
 	public static final String ErrorMessage = "com.eshaafi.patient.consultation:id/error_textview";
 
 	//Instant Call flow
+	public static final String InstantCallBtn1 = "com.eshaafi.patient.consultation:id/guide";
 	public static final String AppointmentTimeText = "com.eshaafi.patient.consultation:id/appointment_time_textview";
 	public static final String ProceedButton = "com.eshaafi.patient.consultation:id/proceed_button";
 	public static final String ProfileSelection = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]";

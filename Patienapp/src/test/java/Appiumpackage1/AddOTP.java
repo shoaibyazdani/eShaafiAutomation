@@ -21,8 +21,13 @@ public class AddOTP {
             java.util.Scanner errorScanner = new java.util.Scanner(process.getErrorStream()).useDelimiter("\\A");
             String errorOutput = errorScanner.hasNext() ? errorScanner.next() : "";
 
-            System.out.println("Output: " + output);
-            System.out.println("Error: " + errorOutput);
+            if (output != null) {
+                System.out.println("Output: " + output);
+            }
+
+            if (errorOutput != null) {
+                System.out.println("Error: " + errorOutput);
+            }
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

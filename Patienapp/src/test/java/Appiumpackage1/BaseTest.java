@@ -63,8 +63,8 @@ public class BaseTest {
 
 
 		UiAutomator2Options options = new UiAutomator2Options();
-		options.setDeviceName("OPPO CPH2421");
-		//				options.setDeviceName("Pixel 7 pro");
+//		options.setDeviceName("OPPO CPH2421");
+						options.setDeviceName("Pixel 6 ");
 		options.setCapability("appPackage", "com.eshaafi.patient.consultation");
 		options.setCapability("appActivity", "com.eshaafi.patient.consultation.ui.auth.AuthActivity");
 		options.setCapability("appWaitActivity", "com.eshaafi.patient.consultation.ui.auth.AuthActivity");
@@ -96,7 +96,9 @@ public class BaseTest {
 	
 	//Login Flow
 	public boolean Login() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 		//Used Page object Pattern
 		LoginScreen  loginscreen = new LoginScreen(driver);
@@ -108,24 +110,33 @@ public class BaseTest {
 		String otpValue = "999999";
 		AddOTP.enterText(otpValue);
 		
-//		loginscreen.SelectProfile();
+		loginscreen.SelectProfile();
 		
-
-		// Check if OTP is correct (5 characters are expected)
-		if (otpValue.equals("999999")) {
-			// Simulate login by checking if the home screen elements are visible after entering OTP
-			WebElement homeScreenElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(InstantCallBtn)));
-
-			// Add additional assertions or actions for successful login
-			System.out.println("Login Successful ");
-			return true;
+		WebElement Instantcallicon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((InstantCallBtn))));
+		
+		if (Instantcallicon!= null) {
+		    System.out.println("Login Success");
+		    return true;
 		} else {
-			// Fetch the error message for incorrect OTP
-			WebElement errorMessage1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ErrorMessage)));
-			String errorText = errorMessage1.getText();
-			System.out.println("Error Message: " + errorText);
-			return false;
+		    System.out.println("Login Failed");
+		    return false;
 		}
+		
+//		// Check if OTP is correct (5 characters are expected)
+//		if (otpValue.equals("999999")) {
+//			// Simulate login by checking if the home screen elements are visible after entering OTP
+//			WebElement homeScreenElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(InstantCallBtn)));
+//
+//			// Add additional assertions or actions for successful login
+//			System.out.println("Login Successful ");
+//			return true;
+//		} else {
+//			// Fetch the error message for incorrect OTP
+//			WebElement errorMessage1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ErrorMessage)));
+//			String errorText = errorMessage1.getText();
+//			System.out.println("Error Message: " + errorText);
+//			return false;
+//		}
 
 		//		WebElement phoneInput = driver.findElement(By.id(PhoneNofield));
 		//		phoneInput.sendKeys(phoneNumber);
@@ -255,7 +266,7 @@ public class BaseTest {
 
 	public void BookNow(int n) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		for (int i = 1; i <= n; i++)
+		for (int i = 3; i <= n; i++)
 		{
 			//Booking flow until Payment screen
 			Bookflow(i);
@@ -515,18 +526,19 @@ public class BaseTest {
 	public void Prescription() {
 		
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement prescriptiontile = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PrescriptionHomeId)));
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement prescriptiontile = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id(PrescriptionHomeId)));
 		prescriptiontile.click();
+		System.out.println("Prescription Tile Clicked");
 		
-		WebElement PresFristItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PrescriptionFirstitemId)));
+		WebElement PresFristItem = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PrescriptionFirstitemId)));
 		PresFristItem.click();
 		System.out.println("Prescription List Opened");
 		
-		WebElement Prescriptionview = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PrescriptionOpenedId)));
+		WebElement Prescriptionview = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PrescriptionOpenedId)));
 		System.out.println("Prescription Opened Successfully");
 		
-		WebElement PresDownload = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PrescriptiondownloadId)));
+		WebElement PresDownload = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id(PrescriptiondownloadId)));
 		PresDownload.click();
 		
 		System.out.println("Download button Clickd");
@@ -535,7 +547,7 @@ public class BaseTest {
 		
 		System.out.println("going Back to Home");
 		
-		WebElement BackBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
+		WebElement BackBtn = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
 		BackBtn.click();
 		
 		driver.navigate().back();
@@ -553,6 +565,7 @@ public class BaseTest {
 	public void AddnDeleteProfile() {
 
 		LoginScreen  loginscreen = new LoginScreen(driver);
+		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement sidemenu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(sidemenuId)));
 		sidemenu.click();
@@ -596,9 +609,17 @@ public class BaseTest {
 				WebElement BackBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
 				BackBtn.click();
 				
-//				loginscreen.SelectProfile();
 				
-				driver.navigate().back();
+				
+				loginscreen.SelectProfile();
+				
+//				driver.navigate().back();
+				
+//				try {
+//					Thread.sleep(2500); // Sleep for 2.5 seconds
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
 
 	}
 
@@ -729,7 +750,7 @@ public class BaseTest {
 		proceedBtn.click();
 
 		// Check if toast message appears
-		wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(1));
 
 		// Check if the toast message element is present
 		List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));

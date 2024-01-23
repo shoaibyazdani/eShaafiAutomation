@@ -30,26 +30,27 @@ public class Appiumbasics extends BaseTest {
 			if (Login()) {
 //		    		
 		    		
-		    	//Allow all Permissions	
-		    		allowpermissions();		
-	   		
-		    	//How many slots you want to book
+//		    	//Allow all Permissions	
+//		    		allowpermissions();		
+//	   		
+//		    	//How many slots you want to book
 //		    		BookNowSub(1);
+//		    		
 		    		
-		    		BookNow(1);
-		    		
-		    	//Call Instant Call Method
+		    		BookNow(3);
+//		    		
+//		    	//Call Instant Call Method
 		    		instantcall();
-		    		
-		    	//Check user's balance and record it
+//		    		
+//		    	//Check user's balance and record it
 		    		checkwallet();
-		    		
-		    	//to Add and Delete Profile
+//		    		
+//		    	//to Add and Delete Profile
 		    		AddnDeleteProfile();
-		    		
+//		    		
 		    		Prescription();
-		    		
-		    	//Logout flow
+//		    		
+//		    	//Logout flow
 		    		Logout();
 		    		
 

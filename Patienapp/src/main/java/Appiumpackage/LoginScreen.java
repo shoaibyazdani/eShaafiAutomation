@@ -22,7 +22,7 @@ public class LoginScreen {
 	}
 	
 	//driver.findElement (By.id ("com.androidsample-generalstore: id/nameField")).sendKeys("Rahul. Shetty.");
-	@AndroidFindBy (id="com.eshaafi.patient.consultation:id/phoneno_edittext")
+	@AndroidFindBy (id="com.eshaafi.patient.consultation:id/phoneno_edittext") 
 	private WebElement PhoneNofield;
 	
 	
