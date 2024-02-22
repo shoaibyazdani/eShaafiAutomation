@@ -76,16 +76,19 @@ public class Variablesclass {
 
 	//Side menu
 	public static final String sidebarButtonXPath = "//android.widget.ImageView[@resource-id='com.eshaafi.patient.consultation:id/left_imageview']";
-	public static final String logoutButtonXPath = "//android.widget.LinearLayout[@resource-id='com.eshaafi.patient.consultation:id/logout_layout']";
 	public static final String profileImageXPath = "//android.widget.ImageView[@resource-id='com.eshaafi.patient.consultation:id/profile_circleImageView']";
 	public static final String feedbackButtonXPath = "//android.widget.LinearLayout[@resource-id='com.eshaafi.patient.consultation:id/feedback_layout']";
 	public static final String appointmentButtonXPath = "//android.widget.LinearLayout[@resource-id='com.eshaafi.patient.consultation:id/appointments_layout']";
+	public static final String LabOrdersID ="com.eshaafi.patient.consultation:id/lab_order_layout";
 	public static final String NotificationsId = "com.eshaafi.patient.consultation:id/notification_layout";
 	public static final String SharewithfriendsId = "com.eshaafi.patient.consultation:id/notification_layout";
+	public static final String HealthHistoryId = "com.eshaafi.patient.consultation:id/healthHistoryP";
 	public static final String FaqsId = "com.eshaafi.patient.consultation:id/help_layout";
+	public static final String SubscriptionPlanId = "com.eshaafi.patient.consultation:id/subs_layout";
 	public static final String TermandConditionsId = "com.eshaafi.patient.consultation:id/terms";
 	public static final String PrivacyPolicyId = "com.eshaafi.patient.consultation:id/privacy";
 	public static final String AccountSettingsId = "com.eshaafi.patient.consultation:id/account_layout";
+	public static final String logoutButtonXPath = "//android.widget.LinearLayout[@resource-id='com.eshaafi.patient.consultation:id/logout_layout']";
 
 
 	//ePrescription

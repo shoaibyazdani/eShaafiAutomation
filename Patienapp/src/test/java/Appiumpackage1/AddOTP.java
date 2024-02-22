@@ -21,11 +21,11 @@ public class AddOTP {
             java.util.Scanner errorScanner = new java.util.Scanner(process.getErrorStream()).useDelimiter("\\A");
             String errorOutput = errorScanner.hasNext() ? errorScanner.next() : "";
 
-            if (output != null) {
+            if (!output.isEmpty()) {
                 System.out.println("Output: " + output);
             }
 
-            if (errorOutput != null) {
+            if (!errorOutput.isEmpty()) {
                 System.out.println("Error: " + errorOutput);
             }
 
@@ -33,9 +33,8 @@ public class AddOTP {
             e.printStackTrace();
         }
     }
+}
 
-
-	    }
 
 	
 

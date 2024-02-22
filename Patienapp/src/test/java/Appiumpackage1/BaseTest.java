@@ -10,6 +10,7 @@ import static org.testng.AssertJUnit.assertEquals;
 
 import java.awt.Dimension;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -64,7 +65,7 @@ public class BaseTest {
 
 		UiAutomator2Options options = new UiAutomator2Options();
 //		options.setDeviceName("OPPO CPH2421");
-						options.setDeviceName("Pixel 6 ");
+						options.setDeviceName("Pixel 6a ");
 		options.setCapability("appPackage", "com.eshaafi.patient.consultation");
 		options.setCapability("appActivity", "com.eshaafi.patient.consultation.ui.auth.AuthActivity");
 		options.setCapability("appWaitActivity", "com.eshaafi.patient.consultation.ui.auth.AuthActivity");
@@ -98,7 +99,7 @@ public class BaseTest {
 	public boolean Login() {
 		
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
 
 		//Used Page object Pattern
 		LoginScreen  loginscreen = new LoginScreen(driver);
@@ -109,9 +110,9 @@ public class BaseTest {
 //		/Command line Approach to enter otp
 		String otpValue = "999999";
 		AddOTP.enterText(otpValue);
-		System.out.println("Before clicking Continue button");
+	
 		loginscreen.SelectProfile();
-		System.out.println("After clicking Continue button");
+		
 		
 		WebElement Instantcallicon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((InstantCallBtn))));
 		
@@ -211,6 +212,8 @@ public class BaseTest {
 			    return false;
 			    
 			}
+			
+			
 		}
 
 
@@ -304,18 +307,47 @@ public class BaseTest {
 
 	public void BookNow(int n) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		for (int i = 3; i <= n; i++)
+		for (int i = 1; i <= n; i++)
 		{
 			//Booking flow until Payment screen
 			Bookflow(i);
 			
 			WebDriverWait    wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-			WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(
-					By.id("com.eshaafi.patient.consultation:id/switch1")));
+			
+			WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/switch12")));
 			switchElement.click();
-			System.out.println("Profile Selection Successful ");
-			//	     
-			//	  // Click on Proceed Button
+			
+			
+
+//			        try {
+//			            // Wait for the switch element to be clickable
+//			            WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/switch1")));
+//
+//			            // The switch element is found, click it
+//			            switchElement.click();
+//			            System.out.println("Profile Selection Successful ");
+//
+//			            // Rest of your code...
+//			            
+//			            // Wait for the element to be visible
+//			            WebElement ProceedBtn1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(proceedButtonid)));
+//
+//			            // Click on Book Now
+//			            ProceedBtn1.click();
+//
+//			            // ... Continue with the rest of the code
+//			        } catch (TimeoutException e) {
+//			            // The switch element is not found within the timeout
+//			            // Call executeAdbCommand to navigate back to the home screen
+//			            executeAdbCommand("shell am force-stop com.eshaafi.patient.consultation");
+//			            executeAdbCommand("shell am start -n com.eshaafi.patient.consultation/com.eshaafi.patient.consultation.ui.main.MainActivity");
+//
+//			            System.out.println("Profile Selection Failed. Navigating back to the home screen.");
+//			        }
+
+			        // Rest of your loop...
+			    
+			
 
 			//
 			// Wait for the element to be visible
@@ -337,9 +369,69 @@ public class BaseTest {
 			//Click on Pay Now
 			Gotohome.click();
 			System.out.println("Book now Flow is completed ");
+			
+			try {
+				Thread.sleep(2500); // Sleep for 2.5 seconds
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
 		}
 	}
+	
+	public void referal() {
+		
+		for (int i = 1; i <= 10; i++) {
+			
+		WebDriverWait    wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		
+		Signup("999999");
+		
+		try {
+			Thread.sleep(4500); // Sleep for 2.5 seconds
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		WebElement Wallet = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/walletFragment")));
+		Wallet.click();
+		System.out.println("Wallet Clicked");
+		WebElement Applycodebtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/plan_type_d")));
+		Applycodebtn.click();
+		
+		WebElement Applycode = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/phoneno_edittext")));
+		Applycode.sendKeys("TVNGFR1E");
+		
+		WebElement entercode = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/sharecode")));
+		entercode.click();
+		
+		driver.navigate().back();
+		
+		WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(HomeButtonId)));
+		Home.click();
+		
+	
+		Logout();
+		
+		
+		}
+	}
+	
+	private void executeAdbCommand(String command) {
+	    try {
+	        String adbCommand = "adb " + command;
+	        System.out.println("Executing ADB command: " + adbCommand);
+	        Process process = Runtime.getRuntime().exec(adbCommand);
+	        int exitCode = process.waitFor();
+	        if (exitCode != 0) {
+	            System.err.println("Error executing ADB command. Exit code: " + exitCode);
+	        }
+	    } catch (IOException | InterruptedException e) {
+	        System.err.println("Exception while executing ADB command: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	}
+
 
 	
 
@@ -427,7 +519,7 @@ public class BaseTest {
 
 
 		// Click on the "Subscription" layout
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		WebElement subscriptionLayout = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(subscriptionLayoutid)));
 		subscriptionLayout.click();
 
@@ -461,11 +553,14 @@ public class BaseTest {
 
 		WebElement payNowPopup = wait.until(ExpectedConditions.elementToBeClickable(By.id(payNowid)));
 		payNowPopup.click();
+		
+		
 
+		WebElement Loadingmodal = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/payment_method_label_tv")));
 
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/payment_method_label_tv")));
 
-
-
+		driver.navigate().back();
 		driver.navigate().back();
 
 	}
@@ -547,12 +642,22 @@ public class BaseTest {
 
 		System.out.println("Photo is successfully Uploaded Going Back");
 
+		try {
+			Thread.sleep(2500); // Sleep for 2.5 seconds
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-
-		WebElement backbtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
+		WebElement backbtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackBtnId)));
 		backbtn.click();
 		
-		driver.navigate().back();
+		System.out.println("Back Button clicked");
+		
+		
+		
+		
+		
+		
 	}
 
 	private void hardStopWait(int i) {
@@ -564,7 +669,7 @@ public class BaseTest {
 	public void Prescription() {
 		
 		
-		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(15));
 		WebElement prescriptiontile = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id(PrescriptionHomeId)));
 		prescriptiontile.click();
 		System.out.println("Prescription Tile Clicked");
@@ -707,7 +812,55 @@ public class BaseTest {
 
 
 	}
+	public void SideMenu() {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
+	    // Side menu elements
+	    WebElement sidebarButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(sidebarButtonXPath)));
+	    sidebarButton.click();
+
+	    clickAndWait(wait, By.xpath(profileImageXPath));
+	    System.out.println("Profile Opened");
+	    clickAndWait(wait, By.xpath(appointmentButtonXPath));
+	    System.out.println("Appointment History Opened");
+	    clickAndWait(wait, By.id(LabOrdersID));
+	    System.out.println("Lab Orders Opened");
+	    clickAndWait(wait, By.id(NotificationsId));
+	    System.out.println("Notifications Opened");
+	    clickAndWait(wait, By.id(SharewithfriendsId));
+	    System.out.println("ShareWithFriends Opened");
+	    clickAndWait(wait, By.id(HealthHistoryId));
+	    System.out.println("Health History Oepened");
+	    clickAndWait(wait, By.id(SubscriptionPlanId));
+	    System.out.println("Sunbscription Plans Opened");
+	    clickAndWait(wait, By.xpath(feedbackButtonXPath));
+	    System.out.println("Feedback Opened");
+	    clickAndWait(wait, By.id(FaqsId));
+	    System.out.println("FAQs Page Opened");
+	    clickAndWait(wait, By.id(TermandConditionsId));
+	    System.out.println("Terms and Conditions Page Opened");
+	    clickAndWait(wait, By.id(PrivacyPolicyId));
+	    System.out.println("Privacy Policy Page Opened");
+	    clickAndWait(wait, By.id(AccountSettingsId));
+	    System.out.println("Account Screen Opened");
+	    
+	    WebElement logoutButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(logoutButtonXPath)));
+	    logoutButton.click();
+	}
+
+	private void clickAndWait(WebDriverWait wait, By locator) {
+	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	    element.click();
+	    goBack(wait);
+	}
+
+	private void goBack(WebDriverWait wait) {
+	    WebElement backButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
+	    backButton.click();
+	    WebElement sidebarButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(sidebarButtonXPath)));
+	    sidebarButton.click();
+	}
+	
 
 
 
