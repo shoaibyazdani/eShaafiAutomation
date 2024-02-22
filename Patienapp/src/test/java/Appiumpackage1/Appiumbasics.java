@@ -34,38 +34,42 @@ public class Appiumbasics extends BaseTest {
 //		    		allowpermissions();		
 //	   		
 //		    	//How many slots you want to book
+    				BookNow(1);
 //		    		BookNowSub(4);
-//		    		CorporateLogin()
+////		    		CorporateLogin()
+////		    		
+////		    		
 //		    		
-//		    		BookNow(1);
-		    		SideMenu();
 //		    		
-////		    	//Call Instant Call Method
+//////		    	//Call Instant Call Method
 //		    		instantcall();
 ////		    		
 //		    		MedicalRecord();
-//////		    		
+////		    		
 //////		    	//Check user's balance and record it
 //		    		checkwallet();
-//////		    		
+////		    		
 //////		    	//to Add and Delete Profile
 //		    		AddnDeleteProfile();
-//////		    		
+////		    		
 //		    		Prescription();
-//////		    		
-//////		    	//Logout flow
-//		    		Logout();
 //		    		
-////		    		CorporateLogin();
-//		    		
-////		    		Logout();
-//		    		
-////		    		driver.navigate().back();
-//		    		
-//		    		Signup("999999");
-		    		
-//		    		referal();
 //		    		Subscription();
+////		    		
+////		    	//Logout flow
+//    					SideMenu();
+//////		    		Logout();
+////		    		
+//////		    		CorporateLogin();
+////		    		
+//////		    		Logout();
+////		    		
+//////		    		driver.navigate().back();
+////		    		
+//		    		Signup("999999");
+////		    		
+//		    		referal();
+		    		
 		    		
 //		    		BookNowSub(1);
 		    		

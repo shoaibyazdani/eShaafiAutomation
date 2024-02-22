@@ -571,10 +571,10 @@ public class BaseTest {
 
 	public void BookNowSub(int n) {
 
-		for (int i = 1; i <= n; i++) {
+		for (int i = 4; i <= n; i++) {
 
 			Bookflow(i);
-		}
+		
 
 		WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(15));
 		//Select Plan as payment method
@@ -593,7 +593,7 @@ public class BaseTest {
 		System.out.println("Book now Flow is completed ");
 
 	}
-
+	}
 
 
 
@@ -648,7 +648,7 @@ public class BaseTest {
 			e.printStackTrace();
 		}
 
-		WebElement backbtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackBtnId)));
+		WebElement backbtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
 		backbtn.click();
 		
 		System.out.println("Back Button clicked");
@@ -909,6 +909,7 @@ public class BaseTest {
 
 	// I will Use this method when i need the booking flow untill payment Screen appear
 	public void Bookflow(int i){
+		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		System.out.println("Book Now Flow is started");
 		swipeDown();
@@ -944,41 +945,61 @@ public class BaseTest {
 
 		// Check if toast message appears
 		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(1));
+		
+		
+		int MAX_ATTEMPTS = 10;
+		int currentSlotIndex = i;
+		boolean toastMessageFound = true;
+		System.out.println("I am here");// Flag to track if the toast message is found
+		while ((toastMessageFound && currentSlotIndex < MAX_ATTEMPTS)) {
+		    List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
 
-		// Check if the toast message element is present
-		List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
+		    if (!toastMessageElements.isEmpty()) {
+		        // Handle the toast message
+		        WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
+		        String messageText = toastMessage.getText();
 
-		if (!toastMessageElements.isEmpty()) {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
-			String messageText = toastMessage.getText();
+		        if (messageText.equals("Please select slot first")) {
+		            System.out.println("SlotBooked , Selecting Next");
 
-			if (messageText.equals("Please select slot first")) {
-				System.out.println("Oops the slot is already Booked :(");
-				System.out.println("Selecting Next Slot");
+		            // Handle the case where the toast message is correct
 
-				// Handle the case where the toast message is correct
+		            // Click on the next slot
+		            WebElement slot1 = wait.until(ExpectedConditions.elementToBeClickable(
+		                    By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + (currentSlotIndex + 1) + "]/android.widget.TextView")));
+		            slot1.click();
+		            
+		            System.out.println("Selected Slot: " + i);
+		            
 
-				// Click on the next slot
-				WebElement slot1 = wait.until(ExpectedConditions.elementToBeClickable(
-						By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + (i + 1) + "]/android.widget.TextView")));
-				slot1.click();
+		            // Wait for "Proceed" button to be clickable again
+		            proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/proceed_button")));
 
-				// Wait for "Proceed" button to be clickable again
-				proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/proceed_button")));
+		            try {
+		                Thread.sleep(2500); // Sleep for 2.5 seconds
+		            } catch (InterruptedException e) {
+		                e.printStackTrace();
+		            }
 
-				try {
-					Thread.sleep(2500); // Sleep for 2.5 seconds
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-				proceedBtn.click();
-			}
-		} else {
-			System.out.println("Toast message not found. Continuing with the next steps.");
-
+		            proceedBtn.click();
+		            
+		           
+		        }
+		    } else {
+		    	   toastMessageFound = false;
+		        // If toast message is not found, break the loop and continue with next steps
+		        System.out.println("Toast message not found. Continuing with the next steps.");
+		        break;
+		    }
+		    
+		    // Increment the index
+		    currentSlotIndex++;
+		    
 		}
+		
+
+	
+		   
 
 		//	    String toastMessage= driver.findElement(By.xpath("(//android.widget.Toast)")).getAttribute( "name");
 
