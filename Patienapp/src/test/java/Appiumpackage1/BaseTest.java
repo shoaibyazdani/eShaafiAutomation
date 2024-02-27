@@ -318,9 +318,14 @@ public class BaseTest {
 
 			//Save Data
 			WebElement Save = driver.findElement(By.id("com.eshaafi.patient.consultation:id/save_button"));
-			Save.click();				  
+			Save.click();	
+			
 			System.out.println("Save Button Clicked");
 			return true;
+			
+			
+			
+			
 
 			//		    // Check if OTP is correct (5 characters are expected)
 //			if (otpValue.equals("999999")) {
@@ -339,6 +344,8 @@ public class BaseTest {
 //				System.out.println("Error Message: " + errorText);
 //				return false;
 //			}
+			
+			
 		}
 	}
 
@@ -409,34 +416,52 @@ public class BaseTest {
 			
 		WebDriverWait    wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		
-		Signup("999999");
 		
 		try {
-			Thread.sleep(4500); // Sleep for 2.5 seconds
+			Thread.sleep(3500); // Sleep for 2.5 seconds
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
 		
 		WebElement Wallet = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/walletFragment")));
 		Wallet.click();
 		System.out.println("Wallet Clicked");
 		WebElement Applycodebtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/plan_type_d")));
 		Applycodebtn.click();
+		System.out.println("Apply Clicked");
 		
-		WebElement Applycode = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/phoneno_edittext")));
-		Applycode.sendKeys("TVNGFR1E");
+		WebElement EnterCode = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/phoneno_edittext")));
+		EnterCode.sendKeys("TVNGFR1E");
+		System.out.println("Code Added");
 		
-		WebElement entercode = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/sharecode")));
-		entercode.click();
+		WebElement ApplyButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/sharecode")));
+		ApplyButton.click();
+		System.out.println("Apply Clicked Again");
+		
+//		WebElement ShareCode = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/backHome")));
+//		ShareCode.click();
+//		System.out.println("Share Code Clicked");
+		
+		WebElement CrossButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/icCross")));
+		CrossButton.click();
+		
+		System.out.println("Cross Button Clicked");
 		
 		driver.navigate().back();
+		
+		try {
+			Thread.sleep(3500); // Sleep for 3.5 seconds
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(HomeButtonId)));
 		Home.click();
 		
-	
-		Logout();
 		
+		
+		System.out.println("Home Clicked");
 		
 		}
 	
@@ -595,7 +620,7 @@ public class BaseTest {
 
 	public void BookNowSub(int n) {
 
-		for (int i = 2; i <= n; i++) {
+		for (int i = 1; i <= n; i++) {
 
 			Bookflow(i);
 		
@@ -848,6 +873,9 @@ public class BaseTest {
 
 	}
 	public void SideMenu() {
+		
+		System.out.println("Testing SideMenu Items");
+		
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
 	    // Side menu elements
@@ -950,7 +978,7 @@ public class BaseTest {
 	// I will Use this method when i need the booking flow untill payment Screen appear
 	public void Bookflow(int i){
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		System.out.println("Book Now Flow is started");
 		
 		
@@ -961,7 +989,7 @@ public class BaseTest {
 		BookNow.click();
 
 
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		//Scroll down
 		//driver.findElement (AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"SHA...\"));"));
 
@@ -972,9 +1000,10 @@ public class BaseTest {
 		// Click the element
 		BookAppBtn.click();
 		
-		WebElement Tommorrow = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//android.widget.LinearLayout[@resource-id=\"com.eshaafi.patient.consultation:id/main_layout\"])[2]")));
-		System.out.println("Next Day Seelcted..");
-		Tommorrow.click();	
+		//Disable the below line if you want to book current days slots
+//		WebElement Tommorrow = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//android.widget.LinearLayout[@resource-id=\"com.eshaafi.patient.consultation:id/main_layout\"])[2]")));
+//		System.out.println("Next Day Seelcted..");
+//		Tommorrow.click();	
 		
 		//the will find the available slot automatically and change the Sections from morning to afternoon or afternoon toevening automatically if the slot not found
 		//The scroll is pending if you want to book the one day's all slots

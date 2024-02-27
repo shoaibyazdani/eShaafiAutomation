@@ -28,35 +28,35 @@ public class Appiumbasics extends BaseTest {
 	
 
 
-//					if (Login()) {
+					if (Login()) {
 //		//		    		
 //
 //		//		    	//Allow all Permissions	
 //		//		    		allowpermissions();		
 ////			   		clock();
 		//		    	//How many slots you want to book
-							BookNow(30);
-//							BookNowSub(2);
+							BookNow(1);
+							BookNowSub(1);
 //		////		    	CorporateLogin()
 //		////		    			    		
 //		//		    		
 //		//////		    //Call Instant Call Method
-//				    		instantcall();
+				    		instantcall();
 //		////		    		
-//				    		MedicalRecord();
+				    		MedicalRecord();
 //		////		    		
 //		////		    	//Check user's balance and record it
-//				    		checkwallet();
+				    		checkwallet();
 //		////		    		
 //		//////		    	//to Add and Delete Profile
-//				    		AddnDeleteProfile();
+				    		AddnDeleteProfile();
 //		//		    		
-//				    		Prescription();
+				    		Prescription();
 //		//		    		
 //		//		    		
 //		////		    		
 //		////		    	//Logout flow
-//		    					SideMenu();
+		    					SideMenu();
 //		//////		    		Logout();
 //		////		    		
 //		//////		    		CorporateLogin();
@@ -65,17 +65,17 @@ public class Appiumbasics extends BaseTest {
 //		////		    		
 //		//////		    		driver.navigate().back();
 //		////		    		
-//				    		Signup("999999");
+				    		Signup("999999");
 //				    		Subscription();
 //		////		    		
-//				    		referal();
+				    		referal();
 //
 //
 //		//		    		BookNowSub(1);
 //
 //
 
-//				   	}
+				   	}
 		//		
 
 
