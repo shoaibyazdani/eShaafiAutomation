@@ -34,8 +34,8 @@ public class Appiumbasics extends BaseTest {
 //		//		    	//Allow all Permissions	
 //		//		    		allowpermissions();		
 ////			   		clock();
-//		//		    	//How many slots you want to book
-							BookNow(1);
+		//		    	//How many slots you want to book
+							BookNow(30);
 //							BookNowSub(2);
 //		////		    	CorporateLogin()
 //		////		    			    		

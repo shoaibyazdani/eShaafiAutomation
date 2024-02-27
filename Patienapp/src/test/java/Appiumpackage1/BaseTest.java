@@ -166,10 +166,12 @@ public class BaseTest {
 		AddOTP.enterText(otpValue);
 	
 		loginscreen.SelectProfile();
+		System.out.println("Profile Selected");
+		
 		
 		
 		WebElement Instantcallicon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((InstantCallBtn))));
-		
+		swipeDown();
 		if (Instantcallicon!= null) {
 		    System.out.println("Login Success");
 		    return true;
@@ -254,10 +256,11 @@ public class BaseTest {
 			AddOTP.enterText(otpValue);
 			System.out.println("Before clicking Continue button");
 			loginscreen.SelectProfile();
+			
 			System.out.println("After clicking Continue button");
 			
 			WebElement Instantcallicon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((InstantCallBtn))));
-			
+			swipeDown();
 			if (Instantcallicon!= null) {
 			    System.out.println("Login Success");
 			    return true;
@@ -371,39 +374,6 @@ public class BaseTest {
 			WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/switch12")));
 			switchElement.click();
 			
-			
-
-//			        try {
-//			            // Wait for the switch element to be clickable
-//			            WebElement switchElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/switch1")));
-//
-//			            // The switch element is found, click it
-//			            switchElement.click();
-//			            System.out.println("Profile Selection Successful ");
-//
-//			            // Rest of your code...
-//			            
-//			            // Wait for the element to be visible
-//			            WebElement ProceedBtn1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(proceedButtonid)));
-//
-//			            // Click on Book Now
-//			            ProceedBtn1.click();
-//
-//			            // ... Continue with the rest of the code
-//			        } catch (TimeoutException e) {
-//			            // The switch element is not found within the timeout
-//			            // Call executeAdbCommand to navigate back to the home screen
-//			            executeAdbCommand("shell am force-stop com.eshaafi.patient.consultation");
-//			            executeAdbCommand("shell am start -n com.eshaafi.patient.consultation/com.eshaafi.patient.consultation.ui.main.MainActivity");
-//
-//			            System.out.println("Profile Selection Failed. Navigating back to the home screen.");
-//			        }
-
-			        // Rest of your loop...
-			    
-			
-
-			//
 			// Wait for the element to be visible
 			WebElement ProceedBtn1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(proceedButtonid)));
 
@@ -471,20 +441,20 @@ public class BaseTest {
 		}
 	
 	
-	private void executeAdbCommand(String command) {
-	    try {
-	        String adbCommand = "adb " + command;
-	        System.out.println("Executing ADB command: " + adbCommand);
-	        Process process = Runtime.getRuntime().exec(adbCommand);
-	        int exitCode = process.waitFor();
-	        if (exitCode != 0) {
-	            System.err.println("Error executing ADB command. Exit code: " + exitCode);
-	        }
-	    } catch (IOException | InterruptedException e) {
-	        System.err.println("Exception while executing ADB command: " + e.getMessage());
-	        e.printStackTrace();
-	    }
-	}
+//	private void executeAdbCommand(String command) {
+//	    try {
+//	        String adbCommand = "adb " + command;
+//	        System.out.println("Executing ADB command: " + adbCommand);
+//	        Process process = Runtime.getRuntime().exec(adbCommand);
+//	        int exitCode = process.waitFor();
+//	        if (exitCode != 0) {
+//	            System.err.println("Error executing ADB command. Exit code: " + exitCode);
+//	        }
+//	    } catch (IOException | InterruptedException e) {
+//	        System.err.println("Exception while executing ADB command: " + e.getMessage());
+//	        e.printStackTrace();
+//	    }
+//	}
 
 
 	
@@ -714,6 +684,7 @@ public class BaseTest {
 		
 	}
 
+// We Are calling hardStopWait in medical record whilecapturing the image
 	private void hardStopWait(int i) {
 		// TODO Auto-generated method stub
 
@@ -981,8 +952,8 @@ public class BaseTest {
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		System.out.println("Book Now Flow is started");
-		swipeDown();
-		System.out.println("Swiped Down");
+		
+		
 		//Wait for the element to be visible
 		WebElement BookNow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/book_appointments_button")));
 
@@ -1000,60 +971,69 @@ public class BaseTest {
 
 		// Click the element
 		BookAppBtn.click();
-
+		
+		WebElement Tommorrow = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//android.widget.LinearLayout[@resource-id=\"com.eshaafi.patient.consultation:id/main_layout\"])[2]")));
+		System.out.println("Next Day Seelcted..");
+		Tommorrow.click();	
+		
+		//the will find the available slot automatically and change the Sections from morning to afternoon or afternoon toevening automatically if the slot not found
+		//The scroll is pending if you want to book the one day's all slots
 		try {
-		    boolean afternoonClicked = false; // Flag to track if afternoon element is clicked
+		    boolean afternoonChecked = false;
+		    boolean eveningChecked = false;
 
 		    while (true) {
-		        // Wait for the slot to be visible
-		        WebElement slot = wait.until(ExpectedConditions.visibilityOfElementLocated(
-		                By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView")));
-
-		        // Check if the slot is enabled
-		        boolean isEnabled = slot.isEnabled();
-		        if (isEnabled) {
-		            System.out.println("Slot Found");
-		            // If slot is enabled, click on it and proceed
-		            slot.click();
-		            break; // Break out of the loop as we found a suitable slot
-		        } else {
-		            // If slot is not enabled, check if it's not disabled
-		            boolean isDisabled = !slot.getAttribute("enabled").equals("false");
-
-		            if (!isDisabled) {
-		                // If slot is not enabled and not disabled, click on the afternoonElement
-		                if (!afternoonClicked) {
-		                    WebElement afternoonElement = driver.findElement(By.id("com.eshaafi.patient.consultation:id/afternoon_tv"));
-		                    afternoonElement.click();
-		                    System.out.println("Afternoon Clicked");
-		                    afternoonClicked = true; // Set the flag to true after clicking afternoon element
-		                }
-
-		                // Wait for a brief moment to let the UI update
-		                // Thread.sleep(100);
-
-		                // Re-fetch the slot after clicking the afternoonElement
-		                slot = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView"));
-
-		                // Check if the re-fetched slot is enabled
-		                isEnabled = slot.isEnabled();
-		                if (isEnabled) {
-		                    System.out.println("Slot "+ i +" Found for Booking");
-		                    // If slot is enabled, click on it and proceed
-		                    slot.click();
-		                    break; // Break out of the loop
-		                } else {
-		                    System.out.println("Slot " + i + " is Booked");
-		                    // If slot is still not enabled, increment i to check the next slot
-		                    i++;
-		                }
-		            } else {
-		                // If slot is disabled, increment i to check the next slot
-		                i++;
+		        // Start with the current section, which should be automatically selected
+		        List<WebElement> slots = driver.findElements(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.TextView"));
+		        
+		        // Check if any slots are enabled in the current section
+		        boolean slotFound = false;
+		        for (WebElement slot : slots) {
+		            if (slot.isEnabled()) {
+		                System.out.println("Slot Found");
+		                slot.click();
+		                slotFound = true;
+		                break; // Slot is found, break the loop
 		            }
 		        }
+		        
+		        // If a slot is found, we don't need to proceed further
+		        if (slotFound) {
+		            break;
+		        }
+
+		        // If no slot is found in the current section, move to the next section if not already checked
+		        if (!afternoonChecked) {
+		            WebElement afternoonElement = driver.findElement(By.id("com.eshaafi.patient.consultation:id/afternoon_tv"));
+		            if (afternoonElement.getAttribute("selected").equals("false")) {
+		                afternoonElement.click();
+		                System.out.println("Afternoon Checked");
+		                afternoonChecked = true;
+		                continue; // Go back to checking slots in the new section
+		            }
+		        }
+
+		        if (!eveningChecked) {
+		            WebElement eveningElement = driver.findElement(By.id("com.eshaafi.patient.consultation:id/evening_tv"));
+		            if (eveningElement.getAttribute("selected").equals("false")) {
+		                eveningElement.click();
+		                System.out.println("Evening Checked");
+		                eveningChecked = true;
+		                continue; // Go back to checking slots in the new section
+		            }
+		        }
+
+		        // If all sections have been checked and no slots are available, log the status and break
+		        if (afternoonChecked && eveningChecked) {
+		            System.out.println("All slots are booked");
+		            break;
+		        }
+		        
+		        // Optional: add a delay or a wait for elements to avoid too quick iteration
+		        // Thread.sleep(1000);
 		    }
 		} catch (TimeoutException e) {
+		    System.out.println("Timed out waiting for slot to become available");
 		    // Handle the TimeoutException if needed
 		}
 
