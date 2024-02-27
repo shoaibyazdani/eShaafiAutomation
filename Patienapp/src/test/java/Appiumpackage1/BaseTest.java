@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
@@ -42,6 +44,8 @@ import io.appium.java_client.touch.offset.PointOption;
 import io.netty.handler.timeout.TimeoutException;
 import static Appiumpackage1.Variablesclass.*;
 import static Appiumpackage1.AddOTP.*;
+import java.net.MalformedURLException;
+import java.time.Duration;
 
 public class BaseTest {
 	
@@ -91,6 +95,56 @@ public class BaseTest {
 	}
 	
 
+	public void clock() {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+		WebElement  clockElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(("com.eshaafi.patient.consultation:id/time_textview"))));
+		clockElement.click();
+		
+		WebElement  COnverttotext = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(("com.eshaafi.patient.consultation:id/material_timepicker_mode_button"))));
+		COnverttotext.click();
+
+
+		// Get current time
+//		String currentTime = clockElement.getText();
+//		System.out.println("Current Time: " + currentTime);
+
+		WebElement  timeminuts = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(("com.eshaafi.patient.consultation:id/material_timepicker_edit_text"))));
+		String currentMinuts =  timeminuts.getText();
+		System.out.println("Current Time: " +  currentMinuts);
+		
+		timeminuts.click();
+		
+		int minutes = Integer.parseInt(currentMinuts);
+		if (minutes < 58) {
+		    minutes += 2;
+		    timeminuts.sendKeys(Integer.toString(minutes));
+		}
+
+		
+		// Tap on the clock element to open the time picker
+		clockElement.click();
+
+		// Set new hour using sendKeys (applicable if the clock uses an editable text field)
+		// You might need to replace the element locator and logic based on the actual clock implementation
+		// AndroidElement hourField = driver.findElement(By.id("com.android.deskclock:id.hours"));
+		// hourField.sendKeys(String.valueOf(newHours));
+
+		        // Wait for some time to allow the clock to update
+		        try {
+					Thread.sleep(2500); // Sleep for 2.5 seconds
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+		        // Get the new time after incrementing
+		        String newTime = clockElement.getText();
+		        System.out.println("New Time: " + newTime);
+
+		        // Close the app (optional)
+		        driver.quit();
+		    }
 	
 	
 	
@@ -381,7 +435,7 @@ public class BaseTest {
 	
 	public void referal() {
 		
-		for (int i = 1; i <= 10; i++) {
+		
 			
 		WebDriverWait    wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		
@@ -415,7 +469,7 @@ public class BaseTest {
 		
 		
 		}
-	}
+	
 	
 	private void executeAdbCommand(String command) {
 	    try {
@@ -571,7 +625,7 @@ public class BaseTest {
 
 	public void BookNowSub(int n) {
 
-		for (int i = 4; i <= n; i++) {
+		for (int i = 2; i <= n; i++) {
 
 			Bookflow(i);
 		
@@ -643,7 +697,7 @@ public class BaseTest {
 		System.out.println("Photo is successfully Uploaded Going Back");
 
 		try {
-			Thread.sleep(2500); // Sleep for 2.5 seconds
+			Thread.sleep(4500); // Sleep for 2.5 seconds
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -712,6 +766,8 @@ public class BaseTest {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement sidemenu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(sidemenuId)));
 		sidemenu.click();
+		
+		System.out.println("Adding New Child Profile");
 
 		WebElement profile = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(profileId)));
 		profile.click();
@@ -738,9 +794,14 @@ public class BaseTest {
 		//Delete Profile
 				WebElement SelectProfile = driver.findElement(By.xpath(selectProfileId));
 				SelectProfile.click();
+				
+				System.out.println("Deleting Profile");
+				
 				//Click Three dot Menu
 				WebElement Threedot = driver.findElement(By.id(threeDotMenuId));
 				Threedot.click();
+				
+				System.out.println("3 Dot Menu Clicked");
 
 				//Delete Button Click
 				WebElement Delete= driver.findElement(By.id(deleteButtonId));
@@ -749,6 +810,9 @@ public class BaseTest {
 				//Yes Option Click
 				WebElement Yes = driver.findElement(By.id(yesOptionId));
 				Yes.click();
+				
+				System.out.println("Profile Deleted Successfully");
+				
 				WebElement BackBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
 				BackBtn.click();
 				
@@ -831,6 +895,11 @@ public class BaseTest {
 	    System.out.println("ShareWithFriends Opened");
 	    clickAndWait(wait, By.id(HealthHistoryId));
 	    System.out.println("Health History Oepened");
+	    try {
+			Thread.sleep(3500); // Sleep for 2.5 seconds
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	    clickAndWait(wait, By.id(SubscriptionPlanId));
 	    System.out.println("Sunbscription Plans Opened");
 	    clickAndWait(wait, By.xpath(feedbackButtonXPath));
@@ -932,71 +1001,126 @@ public class BaseTest {
 		// Click the element
 		BookAppBtn.click();
 
-		// wait and Select second slot from the list
-		WebElement slot = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView")));
+		try {
+		    boolean afternoonClicked = false; // Flag to track if afternoon element is clicked
 
-		// Click on the slot
-		slot.click();
+		    while (true) {
+		        // Wait for the slot to be visible
+		        WebElement slot = wait.until(ExpectedConditions.visibilityOfElementLocated(
+		                By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView")));
+
+		        // Check if the slot is enabled
+		        boolean isEnabled = slot.isEnabled();
+		        if (isEnabled) {
+		            System.out.println("Slot Found");
+		            // If slot is enabled, click on it and proceed
+		            slot.click();
+		            break; // Break out of the loop as we found a suitable slot
+		        } else {
+		            // If slot is not enabled, check if it's not disabled
+		            boolean isDisabled = !slot.getAttribute("enabled").equals("false");
+
+		            if (!isDisabled) {
+		                // If slot is not enabled and not disabled, click on the afternoonElement
+		                if (!afternoonClicked) {
+		                    WebElement afternoonElement = driver.findElement(By.id("com.eshaafi.patient.consultation:id/afternoon_tv"));
+		                    afternoonElement.click();
+		                    System.out.println("Afternoon Clicked");
+		                    afternoonClicked = true; // Set the flag to true after clicking afternoon element
+		                }
+
+		                // Wait for a brief moment to let the UI update
+		                // Thread.sleep(100);
+
+		                // Re-fetch the slot after clicking the afternoonElement
+		                slot = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + i + "]/android.widget.TextView"));
+
+		                // Check if the re-fetched slot is enabled
+		                isEnabled = slot.isEnabled();
+		                if (isEnabled) {
+		                    System.out.println("Slot "+ i +" Found for Booking");
+		                    // If slot is enabled, click on it and proceed
+		                    slot.click();
+		                    break; // Break out of the loop
+		                } else {
+		                    System.out.println("Slot " + i + " is Booked");
+		                    // If slot is still not enabled, increment i to check the next slot
+		                    i++;
+		                }
+		            } else {
+		                // If slot is disabled, increment i to check the next slot
+		                i++;
+		            }
+		        }
+		    }
+		} catch (TimeoutException e) {
+		    // Handle the TimeoutException if needed
+		}
+
+
+
 
 		// Wait for "Proceed" button to be clickable
 		WebElement proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
 				By.id("com.eshaafi.patient.consultation:id/proceed_button")));
+		
 		proceedBtn.click();
+		
 
 		// Check if toast message appears
-		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(1));
+//		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(2));
 		
 		
-		int MAX_ATTEMPTS = 10;
-		int currentSlotIndex = i;
-		boolean toastMessageFound = true;
-		System.out.println("I am here");// Flag to track if the toast message is found
-		while ((toastMessageFound && currentSlotIndex < MAX_ATTEMPTS)) {
-		    List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
-
-		    if (!toastMessageElements.isEmpty()) {
-		        // Handle the toast message
-		        WebElement toastMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
-		        String messageText = toastMessage.getText();
-
-		        if (messageText.equals("Please select slot first")) {
-		            System.out.println("SlotBooked , Selecting Next");
-
-		            // Handle the case where the toast message is correct
-
-		            // Click on the next slot
-		            WebElement slot1 = wait.until(ExpectedConditions.elementToBeClickable(
-		                    By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + (currentSlotIndex + 1) + "]/android.widget.TextView")));
-		            slot1.click();
-		            
-		            System.out.println("Selected Slot: " + i);
-		            
-
-		            // Wait for "Proceed" button to be clickable again
-		            proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/proceed_button")));
-
-		            try {
-		                Thread.sleep(2500); // Sleep for 2.5 seconds
-		            } catch (InterruptedException e) {
-		                e.printStackTrace();
-		            }
-
-		            proceedBtn.click();
-		            
-		           
-		        }
-		    } else {
-		    	   toastMessageFound = false;
-		        // If toast message is not found, break the loop and continue with next steps
-		        System.out.println("Toast message not found. Continuing with the next steps.");
-		        break;
-		    }
-		    
-		    // Increment the index
-		    currentSlotIndex++;
-		    
-		}
-		
+//		int MAX_ATTEMPTS = 10;
+//		int currentSlotIndex = i;
+//		boolean toastMessageFound = true;
+//		
+//		while ((toastMessageFound && currentSlotIndex < MAX_ATTEMPTS)) {
+//		    List<WebElement> toastMessageElements = driver.findElements(By.id("com.eshaafi.patient.consultation:id/snackbar_text"));
+//
+//		    if (!toastMessageElements.isEmpty()) {
+//		        // Handle the toast message
+//		        WebElement toastMessage = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.eshaafi.patient.consultation:id/snackbar_text")));
+//		        String messageText = toastMessage.getText();
+//
+//		        if (messageText.equals("Please select slot first")) {
+//		            System.out.println("SlotBooked , Selecting Next");
+//
+//		            // Handle the case where the toast message is correct
+//
+//		            // Click on the next slot
+//		            WebElement slot1 = wait.until(ExpectedConditions.elementToBeClickable(
+//		                    By.xpath("//androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[" + (currentSlotIndex + 2) + "]/android.widget.TextView")));
+//		            slot1.click();
+//		            
+//		            System.out.println("Selected Slot: " + currentSlotIndex);
+//		            
+//
+//		            // Wait for "Proceed" button to be clickable again
+//		            proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/proceed_button")));
+//
+//		            try {
+//		                Thread.sleep(2500); // Sleep for 2.5 seconds
+//		            } catch (InterruptedException e) {
+//		                e.printStackTrace();
+//		            }
+//
+//		            proceedBtn.click();
+//		            
+//		           
+//		        }
+//		    } else {
+//		    	   toastMessageFound = false;
+//		        // If toast message is not found, break the loop and continue with next steps
+//		        System.out.println("Toast message not found. Working on next steps.");
+//		        break;
+//		    }
+//		    
+//		    // Increment the index
+//		    currentSlotIndex++;
+//		    
+//		}
+//		
 
 	
 		   
