@@ -17,67 +17,24 @@ public class Appiumbasics extends BaseTest {
 	@Test
 	public void AppiumTest() throws MalformedURLException, InterruptedException {
 
-		LoginScreen loginscreen = new LoginScreen(driver);
+//		LoginScreen loginscreen = new LoginScreen(driver);
+		
 
-		//    	
+//		***************************************** Inprocess Modules********************************
+		
+		
+//					ContextSwitching();
+		
 
 		//		***************************************** Regression Testing *******************************************************************
 
-		//			
-		//					
-	
+		SideMenu();
+//	            	RegressionTest();
 
 
-					if (Login()) {
-//		//		    		
-//
-//		//		    	//Allow all Permissions	
-//		//		    		allowpermissions();		
-////			   		clock();
-		//		    	//How many slots you want to book
-							BookNow(1);
-							BookNowSub(1);
-//		////		    	CorporateLogin()
-//		////		    			    		
-//		//		    		
-//		//////		    //Call Instant Call Method
-				    		instantcall();
-//		////		    		
-				    		MedicalRecord();
-//		////		    		
-//		////		    	//Check user's balance and record it
-				    		checkwallet();
-//		////		    		
-//		//////		    	//to Add and Delete Profile
-				    		AddnDeleteProfile();
-//		//		    		
-				    		Prescription();
-//		//		    		
-//		//		    		
-//		////		    		
-//		////		    	//Logout flow
-		    					SideMenu();
-//		//////		    		Logout();
-//		////		    		
-//		//////		    		CorporateLogin();
-//		////		    		
-//		//////		    		Logout();
-//		////		    		
-//		//////		    		driver.navigate().back();
-//		////		    		
-				    		Signup("999999");
-//				    		Subscription();
-//		////		    		
-				    		referal();
-//
-//
-//		//		    		BookNowSub(1);
-//
-//
 
-				   	}
-		//		
-
+		
+//
 
 
 
