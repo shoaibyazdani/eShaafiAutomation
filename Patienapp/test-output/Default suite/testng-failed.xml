@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Appiumpackage1.Appiumbasics">
+      <class name="Appiumpackage1.Regression">
         <methods>
-          <include name="AppiumTest"/>
           <include name="ConfigureAppium"/>
+          <include name="AppiumTest"/>
         </methods>
-      </class> <!-- Appiumpackage1.Appiumbasics -->
+      </class> <!-- Appiumpackage1.Regression -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

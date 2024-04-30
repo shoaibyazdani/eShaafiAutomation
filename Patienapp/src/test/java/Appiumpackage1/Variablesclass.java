@@ -8,6 +8,7 @@ public class Variablesclass {
 	public static final String Createaccountbtn = "com.eshaafi.patient.consultation:id/create_account_button";
 	public static final String InstantCallBtn = "com.eshaafi.patient.consultation:id/guide";
 	public static final String ErrorMessage = "com.eshaafi.patient.consultation:id/error_textview";
+	public static final String Clickotp = "com.eshaafi.patient.consultation:id/otp1_textview";
 	public static final String CorporateLoginBtn = "com.eshaafi.patient.consultation:id/corporate_login";
 
 	//Instant Call flow
@@ -79,7 +80,7 @@ public class Variablesclass {
 	public static final String profileImageXPath = "//android.widget.ImageView[@resource-id='com.eshaafi.patient.consultation:id/profile_circleImageView']";
 	public static final String feedbackButtonXPath = "//android.widget.LinearLayout[@resource-id='com.eshaafi.patient.consultation:id/feedback_layout']";
 	public static final String appointmentButtonXPath = "//android.widget.LinearLayout[@resource-id='com.eshaafi.patient.consultation:id/appointments_layout']";
-	public static final String LabOrdersID ="com.eshaafi.patient.consultation:id/lab_order_layout";
+	public static final String LabOrdersID ="//android.widget.TextView[@resource-id=\"com.eshaafi.patient.consultation:id/heading_textview\" and @text=\"Lab Orders\"]";
 	public static final String NotificationsId = "com.eshaafi.patient.consultation:id/notification_layout";
 	public static final String SharewithfriendsId = "com.eshaafi.patient.consultation:id/notification_layout";
 	public static final String HealthHistoryId = "com.eshaafi.patient.consultation:id/healthHistoryP";
@@ -109,7 +110,21 @@ public class Variablesclass {
 	public static final String UploadPrescriptionID1 = "com.eshaafi.patient.consultation:id/uploadPrescription";
 	public static final String PermissionallowforegroundID = "com.android.permissioncontroller:id/permission_allow_foreground_only_button";
 	public static final String PermissionallowID = "com.android.permissioncontroller:id/permission_allow_foreground_only_button";
+	public static final String SelectTestChughtai = "(//android.widget.TextView[@resource-id='com.eshaafi.patient.consultation:id/selectTest'])[1]";
+	public static final String SelectTestidc = "(//android.widget.TextView[@resource-id='com.eshaafi.patient.consultation:id/selectTest'])[2]";
+	public static final String Searchbar = "com.eshaafi.patient.consultation:id/search_bar";
+	public static final String SearchBtn = "com.eshaafi.patient.consultation:id/searchIcon";
+	public static final String AddTest = "(//android.widget.ImageView[@resource-id=\"com.eshaafi.patient.consultation:id/plus\"])[1]";
+	public static final String RemoveTest = "(//android.widget.ImageView[@resource-id=\"com.eshaafi.patient.consultation:id/minus\"])[1]";
+	public static final String ViewCart = "com.eshaafi.patient.consultation:id/bookCart";
+	public static final String Proceedtocheckout = "com.eshaafi.patient.consultation:id/bookCart";
+	public static final String LabVisitxpath = "//android.widget.RadioButton[@resource-id=\"com.eshaafi.patient.consultation:id/labVisit\"]";
+	public static final String LabVisitId = "com.eshaafi.patient.consultation:id/labVisit";
+	public static final String HomeSamplingId = "com.eshaafi.patient.consultation:id/homeSampling";
+	public static final String PlaceOrderId = "com.eshaafi.patient.consultation:id/save_button";
+	public static final String PlaceOrderxpath = "//android.widget.Button[@resource-id=\"com.eshaafi.patient.consultation:id/save_button\"]";
 	public static final String TimeID = "com.eshaafi.patient.consultation:id/time_textview";
+	
 	public static final String TextModeID = "com.eshaafi.patient.consultation:id/material_timepicker_mode_button";
 	public static final String HourinputID = "com.eshaafi.patient.consultation:id/material_hour_tv";
 	public static final String MinutesinpitID = "com.eshaafi.patient.consultation:id/material_minute_tv";
@@ -120,10 +135,9 @@ public class Variablesclass {
 	public static final String NameId = "com.eshaafi.patient.consultation:id/name_edittext";
 	public static final String DateId = "com.eshaafi.patient.consultation:id/date_textView";
 	public static final String TimeId = "com.eshaafi.patient.consultation:id/time_textview";
-	public static final String LabVisitId = "com.eshaafi.patient.consultation:id/labVisit";
-	public static final String HomeSamplingId = "com.eshaafi.patient.consultation:id/homeSampling";
+	
+	
 	public static final String SelectLabId = "com.eshaafi.patient.consultation:id/text_input_end_icon";
-	public static final String PlaceOrderId = "com.eshaafi.patient.consultation:id/save_button";
 	
 	
 

@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-11T19:04:43 PKT" name="Default suite" finished-at="2024-03-11T19:05:07 PKT" duration-ms="23855">
+  <suite started-at="2024-04-30T17:32:34 PKT" name="Default suite" finished-at="2024-04-30T17:38:27 PKT" duration-ms="352656">
     <groups>
     </groups>
-    <test started-at="2024-03-11T19:04:43 PKT" name="Default test" finished-at="2024-03-11T19:05:07 PKT" duration-ms="23855">
-      <class name="Appiumpackage1.Appiumbasics">
-        <test-method is-config="true" signature="ConfigureAppium()[pri:0, instance:Appiumpackage1.Appiumbasics@5b7a7f33]" started-at="2024-03-11T19:04:43 PKT" name="ConfigureAppium" finished-at="2024-03-11T19:04:52 PKT" duration-ms="8332" status="PASS">
+    <test started-at="2024-04-30T17:32:34 PKT" name="Default test" finished-at="2024-04-30T17:38:27 PKT" duration-ms="352656">
+      <class name="Appiumpackage1.Regression">
+        <test-method is-config="true" signature="ConfigureAppium()[pri:0, instance:Appiumpackage1.Regression@6138e79a]" started-at="2024-04-30T17:32:34 PKT" name="ConfigureAppium" finished-at="2024-04-30T17:32:44 PKT" duration-ms="9550" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ConfigureAppium -->
-        <test-method signature="AppiumTest()[pri:0, instance:Appiumpackage1.Appiumbasics@5b7a7f33]" started-at="2024-03-11T19:04:52 PKT" name="AppiumTest" finished-at="2024-03-11T19:05:07 PKT" duration-ms="15483" status="PASS">
+        <test-method signature="AppiumTest()[pri:0, instance:Appiumpackage1.Regression@6138e79a]" started-at="2024-04-30T17:32:44 PKT" name="AppiumTest" finished-at="2024-04-30T17:38:27 PKT" duration-ms="342950" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AppiumTest -->
-      </class> <!-- Appiumpackage1.Appiumbasics -->
+      </class> <!-- Appiumpackage1.Regression -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

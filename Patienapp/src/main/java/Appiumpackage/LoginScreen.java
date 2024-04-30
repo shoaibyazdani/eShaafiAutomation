@@ -38,7 +38,7 @@ public class LoginScreen {
 	@AndroidFindBy (id="com.eshaafi.patient.consultation:id/error_textview")
 	private WebElement ErrorMessage;
 	
-	@AndroidFindBy (xpath="(//android.widget.ImageView[@resource-id=\"com.eshaafi.patient.consultation:id/profile_image\"])[3]")
+	@AndroidFindBy (xpath="(//android.widget.ImageView[@resource-id=\"com.eshaafi.patient.consultation:id/profile_image\"])[1]")
 	private WebElement selectprofile;
 	
 	@AndroidFindBy (id="com.eshaafi.patient.consultation:id/corporate_login")
