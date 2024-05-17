@@ -29,6 +29,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.bidi.log.LogEntry;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.mobile.NetworkConnection;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,7 +40,6 @@ import org.testng.annotations.BeforeClass;
 import dev.failsafe.internal.util.Assert;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -202,18 +202,24 @@ public class BaseTest {
 		
 		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(13));
 		WebElement CLickfield = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((Clickotp))));
+		
+		// Perform long click
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(CLickfield).perform();
+		
+		
 		// Press and  Hold
-        TouchAction touchAction = new TouchAction(driver);
-
-        // Create LongPressOptions with the element
-        LongPressOptions longPressOptions = new LongPressOptions()
-                .withElement(ElementOption.element(CLickfield))
-                .withDuration(Duration.ofSeconds(2)); // Adjust the duration as needed
-
-        // Perform the long press action
-        touchAction.longPress(longPressOptions)
-                   .release()
-                   .perform();
+        //TouchAction touchAction = new TouchAction(driver);
+//        // Create LongPressOptions with the element
+//        LongPressOptions longPressOptions = new LongPressOptions()
+//                .withElement(ElementOption.element(CLickfield))
+//                .withDuration(Duration.ofSeconds(2)); // Adjust the duration as needed
+//
+//        // Perform the long press action
+//        touchAction.longPress(longPressOptions)
+//                   .release()
+//                   .perform();
+		
 		try {
 			wait2.until(ExpectedConditions.visibilityOfElementLocated(
 					By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button")));
@@ -784,7 +790,10 @@ public class BaseTest {
 		System.out.println("Prescription List Opened");
 
 		WebElement Prescriptionview = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PrescriptionOpenedId)));
-		System.out.println("Prescription Opened Successfully");
+		// Check if the element is visible
+		if (Prescriptionview.isDisplayed()) {
+			System.out.println("Prescription Opened Successfully");
+		}
 
 		WebElement PresDownload = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id(PrescriptiondownloadId)));
 		PresDownload.click();
@@ -921,7 +930,10 @@ public class BaseTest {
 		// Wait for the visibility of any ViewGroup within the RecyclerView
 		WebElement firstVisibleItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id='com.eshaafi.patient.consultation:id/transaction_recyclerview']/android.view.ViewGroup")));
 
-		System.out.println("Wallet History shown ");
+		// Check if the element is visible
+		if (firstVisibleItem.isDisplayed()) {
+		    System.out.println("Wallet History shown");
+		}
 
 
 		WebElement Backbutton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BackButton)));
@@ -1001,51 +1013,6 @@ public class BaseTest {
 	    
 	}
 	
-	private void waitForNetworkIdle(WebDriverWait wait) {
-	    try {
-	        long startTime = System.currentTimeMillis();
-	        long maxWaitTime = 30000; // Maximum wait time of 30 seconds
-	        long previousNetworkTraffic = getNetworkTraffic();
-	        System.out.println("Initial network traffic: " + previousNetworkTraffic);
-
-	        while (System.currentTimeMillis() - startTime < maxWaitTime) {
-	            long currentNetworkTraffic = getNetworkTraffic();
-	            System.out.println("Current network traffic: " + currentNetworkTraffic);
-
-	            if (currentNetworkTraffic == previousNetworkTraffic) {
-	                System.out.println("Network is idle, no pending requests.");
-	                return;
-	            }
-
-	            previousNetworkTraffic = currentNetworkTraffic;
-	            Thread.sleep(500); // Wait for a short interval before checking again
-	        }
-
-	        throw new RuntimeException("Timed out waiting for network to become idle.");
-	    } catch (InterruptedException | IOException e) {
-	        System.out.println("Error while waiting for network idle: " + e.getMessage());
-	    }
-	}
-
-	private long getNetworkTraffic() throws IOException {
-	    String adbCommand = "adb shell cat /proc/net/xt_qtaguid/stats/";
-	    Process process = Runtime.getRuntime().exec(adbCommand);
-	    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-	    String line;
-	    long totalTraffic = 0;
-
-	    while ((line = reader.readLine()) != null) {
-	        String[] parts = line.trim().split("\\s+");
-	        if (parts.length >= 7) {
-	            long bytesReceived = Long.parseLong(parts[5]);
-	            long bytesSent = Long.parseLong(parts[6]);
-	            totalTraffic += bytesReceived + bytesSent;
-	        }
-	    }
-
-	    System.out.println("Total network traffic: " + totalTraffic);
-	    return totalTraffic;
-	}
 
 
 
