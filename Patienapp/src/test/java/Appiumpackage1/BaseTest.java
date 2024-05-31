@@ -194,11 +194,15 @@ public class BaseTest {
 		LoginScreen  loginscreen = new LoginScreen(driver);
 		loginscreen.enterphoneNo("3066163246");
 		loginscreen.ClickContinue();
+		
+	//this OTP add Method was using cmd command to enter text but it workds only in single device
 		//		loginscreen.Clickotpfield();
+		//		AddOTP.enterText(otpValue);
+		
+		
+		//Enter OTP in With just Long Press
 		String otpValue = "999999";
 		driver.setClipboardText(otpValue);
-		
-		//AddOTP.enterText(otpValue);
 		
 		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(13));
 		WebElement CLickfield = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((Clickotp))));
@@ -208,17 +212,6 @@ public class BaseTest {
 		actions.clickAndHold(CLickfield).perform();
 		
 		
-		// Press and  Hold
-        //TouchAction touchAction = new TouchAction(driver);
-//        // Create LongPressOptions with the element
-//        LongPressOptions longPressOptions = new LongPressOptions()
-//                .withElement(ElementOption.element(CLickfield))
-//                .withDuration(Duration.ofSeconds(2)); // Adjust the duration as needed
-//
-//        // Perform the long press action
-//        touchAction.longPress(longPressOptions)
-//                   .release()
-//                   .perform();
 		
 		try {
 			wait2.until(ExpectedConditions.visibilityOfElementLocated(
@@ -285,7 +278,7 @@ public class BaseTest {
 
 	//		***************************************** SIGNUP Flow *******************************************************************
 	//This method Auto genrate a number everytime i start
-	public boolean Signup(String otp) {
+	public boolean Signup(String otp) throws InterruptedException {
 
 		LoginScreen loginscreen = new LoginScreen(driver);
 
@@ -309,9 +302,20 @@ public class BaseTest {
 
 
 			System.out.println("Entering OTP");
-
+			
+			//Enter OTP in With just Long Press
 			String otpValue = "999999";
-			AddOTP.enterText(otpValue);
+			driver.setClipboardText(otpValue);
+			
+		
+			WebElement CLickfield = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id((Clickotp))));
+			
+			// Perform long click
+			Actions actions = new Actions(driver);
+			actions.clickAndHold(CLickfield).perform();
+
+//			String otpValue = "999999";
+//			AddOTP.enterText(otpValue);
 
 			Sigupdata();
 
@@ -327,6 +331,42 @@ public class BaseTest {
 
 		}
 	}
+	
+	//Call this method when need to fill Signup form
+		public void Sigupdata() throws InterruptedException {
+			  // Generate a random name
+	        String randomName = generateRandomName();  
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+			
+			//Full name
+			WebElement Name =wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/name_edittext")));
+			Name.sendKeys(randomName);
+
+
+			//DOb
+			WebElement DOB = driver.findElement(By.id("com.eshaafi.patient.consultation:id/date_textView"));
+			DOB.click();
+			System.out.println("DOB Selected");
+			Thread.sleep(1000);
+			WebElement Okbtn = driver.findElement(By.id("com.eshaafi.patient.consultation:id/ok_btn"));
+			Okbtn.click();
+
+
+			// Locate the Gender dropdown element and click it
+			WebElement genderDropdown = driver.findElement(By.id("com.eshaafi.patient.consultation:id/text_input_end_icon"));
+			genderDropdown.click();
+
+			// Find the option "Male" and click it
+			WebElement maleOption = driver.findElement(By.xpath("//android.widget.TextView[@text='Male']"));
+			maleOption.click();
+			System.out.println("Gender is Selected");
+
+			WebElement City = driver.findElement(By.id("com.eshaafi.patient.consultation:id/location_text"));
+			City.sendKeys("Lahore");
+
+			System.out.println("City Added");
+
+		}
 
 
 	// Helper method to generate a random phone number with the same prefix and random digits
@@ -820,7 +860,7 @@ public class BaseTest {
 
 
 
-	public void AddnDeleteProfile() {
+	public void AddnDeleteProfile() throws InterruptedException {
 
 		LoginScreen  loginscreen = new LoginScreen(driver);
 
@@ -1160,9 +1200,11 @@ public class BaseTest {
 		System.out.println("Permissions Allowed");
 
 	}
-
-	//	********************************** Reuseable code for Booking flow******************************************
-
+	/* 
+ 
+ 					Reuseable code for Booking flow
+	 
+	   */
 
 	// I will Use this method when i need the booking flow untill payment Screen appear
 	public void Bookflow(int i){
@@ -1189,11 +1231,6 @@ public class BaseTest {
 		// Click the element
 		BookAppBtn.click();
 
-		//Disable the below line if you want to book current days slots
-		//		WebElement Tommorrow = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//android.widget.LinearLayout[@resource-id=\"com.eshaafi.patient.consultation:id/main_layout\"])[2]")));
-		//		System.out.println("Next Day Seelcted..");
-		//		Tommorrow.click();	
-
 		//the will find the available slot automatically and change the Sections from morning to afternoon or afternoon toevening automatically if the slot not found
 		//The scroll is pending if you want to book the one day's all slots
 		try {
@@ -1202,17 +1239,19 @@ public class BaseTest {
 
 			while (true) {
 				// Start with the current section, which should be automatically selected
-				List<WebElement> slots = driver.findElements(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.TextView"));
+				 List<WebElement> slots = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.TextView")));
 
-				// Check if any slots are enabled in the current section
-				boolean slotFound = false;
-				for (WebElement slot : slots) {
-					if (slot.isEnabled()) {
-						slot.click();
-						slotFound = true;
-						break; // Slot is found, break the loop
-					}
-				}
+				 boolean slotFound = false;
+			        for (WebElement slot : slots) {
+			            if (slot.isDisplayed() && slot.isEnabled()) {
+			                System.out.println("Slot Found: " + slot.getText());
+			                slot.click();
+			                slotFound = true;
+			                break; // Slot is found, break the loop
+			            } else {
+			                System.out.println("Slot already booked: " + slot.getText());
+			            }
+			        }
 
 				// If a slot is found, we don't need to proceed further
 				if (slotFound) {
@@ -1246,8 +1285,7 @@ public class BaseTest {
 					break;
 				}
 
-				// Optional: add a delay or a wait for elements to avoid too quick iteration
-				// Thread.sleep(1000);
+				
 			}
 		} catch (TimeoutException e) {
 			System.out.println("Timed out waiting for slot to become available");
@@ -1255,19 +1293,11 @@ public class BaseTest {
 		}
 
 
-
-
 		// Wait for "Proceed" button to be clickable
 		WebElement proceedBtn = wait.until(ExpectedConditions.elementToBeClickable(
 				By.id("com.eshaafi.patient.consultation:id/proceed_button")));
 
 		proceedBtn.click();
-
-
-		//	    String toastMessage= driver.findElement(By.xpath("(//android.widget.Toast)")).getAttribute( "name");
-
-		//	    AssertJUnit.assertEquals(toastMessage, "Please select slot first");
-
 		//Select Profile
 		WebElement Selectprofile = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]")));
 		Selectprofile.click();
@@ -1306,57 +1336,6 @@ public class BaseTest {
 	}
 
 
-
-	//Call this method when need to fill Signup form
-	public void Sigupdata() {
-
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-
-		//Full name
-		WebElement Name =wait.until(ExpectedConditions.elementToBeClickable(By.id("com.eshaafi.patient.consultation:id/name_edittext")));
-		Name.sendKeys("Shoaib Yazdani");
-
-
-		//DOb
-		WebElement DOB = driver.findElement(By.id("com.eshaafi.patient.consultation:id/date_textView"));
-		DOB.click();
-		System.out.println("DOB Selected");
-		//		    WebElement month = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[1]/android.widget.Button[1]"));
-		//		    month.click();
-		//		    
-		//		    WebElement day = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[2]/android.widget.Button[1]"));
-		//		    day.click();
-		//		    
-		//		    WebElement year = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[3]/android.widget.Button"));
-		//		    year.click();
-		//		    
-		WebElement Okbtn = driver.findElement(By.id("com.eshaafi.patient.consultation:id/ok_btn"));
-		Okbtn.click();
-
-
-
-		//Gender
-		// Locate the Gender dropdown element and click it
-		WebElement genderDropdown = driver.findElement(By.id("com.eshaafi.patient.consultation:id/text_input_end_icon"));
-		genderDropdown.click();
-
-
-
-		//			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-		// Find all elements within the dropdown
-		// Find the option "Male" and click it
-		WebElement maleOption = driver.findElement(By.xpath("//android.widget.TextView[@text='Male']"));
-		maleOption.click();
-		System.out.println("Gender is Selected");
-
-		WebElement City = driver.findElement(By.id("com.eshaafi.patient.consultation:id/location_text"));
-		City.sendKeys("Lahore");
-
-		System.out.println("City Added");
-
-	}
 	public static void changeDriverContextToWeb(AppiumDriver driver) {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    if (driver instanceof SupportsContextSwitching) {
@@ -1407,7 +1386,9 @@ public class BaseTest {
 	}
 
 	}
-
+	
+	
+    		
 
 	public void ContextSwitching() throws InterruptedException, IOException {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -1489,6 +1470,19 @@ public class BaseTest {
 			System.out.println("Title is not 'Payment Method'");
 //		}
 	}
+	
+	private static final String[] FIRST_NAMES = {"John", "Emily", "Michael", "Sophia", "David", "Emma", "Daniel", "Olivia", "Matthew", "Ava"};
+    private static final String[] LAST_NAMES = {"Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson"};
+    private static final Random RANDOM = new Random();
+    
+    
+    
+    public static String generateRandomName() {
+    	
+        String firstName = FIRST_NAMES[RANDOM.nextInt(FIRST_NAMES.length)];
+        String lastName = LAST_NAMES[RANDOM.nextInt(LAST_NAMES.length)];
+        return firstName + " " + lastName;
+    }
 
 
 

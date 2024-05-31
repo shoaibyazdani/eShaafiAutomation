@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class Profile extends BaseTest {
 	@Test
-	public void AddNewProfile() {
+	public void AddNewProfile() throws InterruptedException {
 
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
