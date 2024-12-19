@@ -4,6 +4,7 @@ public class Variablesclass {
 
 
 	//Login Screen Variables
+	public static final String skipSplash = "com.eshaafi.patient.consultation:id/skip_imageview";
 	public static final String PhoneNofield = "com.eshaafi.patient.consultation:id/phoneno_edittext";
 	public static final String Createaccountbtn = "com.eshaafi.patient.consultation:id/create_account_button";
 	public static final String InstantCallBtn = "com.eshaafi.patient.consultation:id/guide";
@@ -11,14 +12,15 @@ public class Variablesclass {
 	public static final String Clickotp = "com.eshaafi.patient.consultation:id/otp1_textview";
 	public static final String CorporateLoginBtn = "com.eshaafi.patient.consultation:id/corporate_login";
 
-	//Instant Call flow
+	//Booking flow
 	public static final String InstantCallBtn1 = "com.eshaafi.patient.consultation:id/guide";
 	public static final String AppointmentTimeText = "com.eshaafi.patient.consultation:id/appointment_time_textview";
 	public static final String ProceedButton = "com.eshaafi.patient.consultation:id/proceed_button";
 	public static final String ProfileSelection = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView[1]";
 	public static final String SelectWallet = "com.eshaafi.patient.consultation:id/switch1";
 	public static final String PayNowBtn = "com.eshaafi.patient.consultation:id/pay_now_button";
-	public static final String GoToHomeElement = "//android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView[2]";
+	public static final String payFastOption = "com.eshaafi.patient.consultation:id/payfast_img";
+	public static final String GoToHomeElement = "com.eshaafi.patient.consultation:id/pay_proceed_Layout";
 	public static final String ErrorMessageE = "com.eshaafi.patient.consultation:id/error_message";
 
 
@@ -28,17 +30,19 @@ public class Variablesclass {
 	public static final String recyclerViewItemid = "//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.eshaafi.patient.consultation:id/plans_recycler\"]/android.view.ViewGroup[1]";
 	public static final String subscribeNowButtonid = "com.eshaafi.patient.consultation:id/subscribe_now";
 	public static final String jazzCashRadioButtonid = "(//android.widget.RadioButton[@resource-id=\"com.eshaafi.patient.consultation:id/radio\"])[2]";
-	public static final String proceedButtonid = "com.eshaafi.patient.consultation:id/pay_now_button";
+	public static final String proceedButtonid = "com.eshaafi.patient.consultation:id/pay_proceed_btn";
 	public static final String accountNumberEditTextid = "com.eshaafi.patient.consultation:id/account_number_edittext";
 	public static final String cnicEditTextid = "com.eshaafi.patient.consultation:id/cnic_edittext";
 	public static final String proceedPayNowButtonid = "com.eshaafi.patient.consultation:id/paynow_button";
 	public static final String payNowid = "com.eshaafi.patient.consultation:id/pay_now_button";
-	public static final String PlanPaymentmethod = "com.eshaafi.patient.consultation:id/plan_detail";
+	public static final String individualPlan = "com.eshaafi.patient.consultation:id/individualsubs_tile";
+	public static final String corporatePlan = "com.eshaafi.patient.consultation:id/corporateSubsPlanLayout";
+	public static final String confirmPlanBtn = "com.eshaafi.patient.consultation:id/bookingWithPlan_btn";
 
 
 
 	//Medical Record
-	public static final String medicalRecordsId = "com.eshaafi.patient.consultation:id/medical_history_layout";
+	public static final String medicalRecordsId = "com.eshaafi.patient.consultation:id/trackerIv";
 	public static final String profileImageXpath = "(//android.widget.ImageView[@resource-id=\"com.eshaafi.patient.consultation:id/profile_image\"])[2]";
 	public static final String addRecordButtonId = "com.eshaafi.patient.consultation:id/add_record_button";
 	public static final String cropTickId = "com.eshaafi.patient.consultation:id/menu_crop";
@@ -62,7 +66,7 @@ public class Variablesclass {
 
 
 	//Delete Profile
-	public static final String selectProfileId = "(//android.widget.ImageView[@resource-id='com.eshaafi.patient.consultation:id/profile_image'])[2]";
+	public static final String selectProfileId = "(//android.widget.ImageView[@resource-id='com.eshaafi.patient.consultation:id/profile_image'])[3]";
 	public static final String threeDotMenuId = "com.eshaafi.patient.consultation:id/menu_imageview";
 	public static final String deleteButtonId = "com.eshaafi.patient.consultation:id/title";
 	public static final String yesOptionId = "com.eshaafi.patient.consultation:id/leave_button";
@@ -70,7 +74,7 @@ public class Variablesclass {
 
 
 	//Check Wallet balance
-	public static final String walletIconXpath = "//android.widget.FrameLayout[@content-desc=\"Wallet\"]/android.widget.FrameLayout/android.widget.ImageView";
+	public static final String walletIcon = "com.eshaafi.patient.consultation:id/wallet_layout";
 	public static final String walletBalanceElementId = "com.eshaafi.patient.consultation:id/current_balance_textview";
 	public static final String HomeButtonId = "com.eshaafi.patient.consultation:id/homefragment";
 
@@ -82,7 +86,7 @@ public class Variablesclass {
 	public static final String appointmentButtonXPath = "//android.widget.LinearLayout[@resource-id='com.eshaafi.patient.consultation:id/appointments_layout']";
 	public static final String LabOrdersID ="//android.widget.TextView[@resource-id=\"com.eshaafi.patient.consultation:id/heading_textview\" and @text=\"Lab Orders\"]";
 	public static final String NotificationsId = "com.eshaafi.patient.consultation:id/notification_layout";
-	public static final String SharewithfriendsId = "com.eshaafi.patient.consultation:id/notification_layout";
+	public static final String SharewithfriendsId = "com.eshaafi.patient.consultation:id/inviteUsingReferralCode";
 	public static final String HealthHistoryId = "com.eshaafi.patient.consultation:id/healthHistoryP";
 	public static final String FaqsId = "com.eshaafi.patient.consultation:id/help_layout";
 	public static final String SubscriptionPlanId = "com.eshaafi.patient.consultation:id/subs_layout";
@@ -128,6 +132,8 @@ public class Variablesclass {
 	public static final String TextModeID = "com.eshaafi.patient.consultation:id/material_timepicker_mode_button";
 	public static final String HourinputID = "com.eshaafi.patient.consultation:id/material_hour_tv";
 	public static final String MinutesinpitID = "com.eshaafi.patient.consultation:id/material_minute_tv";
+	
+	
 	 //Check Medical Record for Camera Gallery Variables
 //	public static final String OpenCameraID = "com.eshaafi.patient.consultation:id/title_tv";
 //	public static final String SelectfromGalleryID = "com.eshaafi.patient.consultation:id/camera_title_tv";
@@ -135,9 +141,13 @@ public class Variablesclass {
 	public static final String NameId = "com.eshaafi.patient.consultation:id/name_edittext";
 	public static final String DateId = "com.eshaafi.patient.consultation:id/date_textView";
 	public static final String TimeId = "com.eshaafi.patient.consultation:id/time_textview";
-	
-	
 	public static final String SelectLabId = "com.eshaafi.patient.consultation:id/text_input_end_icon";
+	
+	
+	
+	//feedback
+	public static final String feedbackInputField = "com.eshaafi.patient.consultation:id/et_feedback";
+	public static final String feedbackSubmit = "com.eshaafi.patient.consultation:id/cl_btn";
 	
 	
 
